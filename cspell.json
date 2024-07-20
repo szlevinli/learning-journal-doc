@@ -1,9 +1,12 @@
 {
   "words": [
     "arithmatex",
+    "infty",
     "javascripts",
     "katex",
     "pymdownx",
+    "scipy",
+    "seaborn",
     "superfences",
     "twemoji"
   ]

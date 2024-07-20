@@ -1,13 +1,20 @@
 {
   "words": [
     "arithmatex",
+    "figsize",
+    "ICDF",
     "infty",
     "javascripts",
     "katex",
+    "kdeplot",
+    "Kruskal",
     "pymdownx",
     "scipy",
     "seaborn",
     "superfences",
-    "twemoji"
+    "twemoji",
+    "Wilcoxon",
+    "xlabel",
+    "ylabel"
   ]
 }

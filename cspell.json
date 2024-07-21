@@ -1,8 +1,15 @@
 {
   "words": [
     "arithmatex",
+    "arrowprops",
+    "axhline",
+    "axvline",
+    "ECDF",
+    "ecdfplot",
+    "facecolor",
     "figsize",
     "histplot",
+    "horizontalalignment",
     "ICDF",
     "infty",
     "javascripts",
@@ -10,14 +17,19 @@
     "kdeplot",
     "Kruskal",
     "linestyle",
+    "numpy",
+    "probplot",
     "pymdownx",
+    "Quantile",
     "scipy",
     "seaborn",
     "Silverman's",
     "superfences",
     "twemoji",
+    "verticalalignment",
     "Wilcoxon",
     "xlabel",
+    "xytext",
     "ylabel"
   ]
 }

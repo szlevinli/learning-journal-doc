@@ -4,6 +4,7 @@
     "arrowprops",
     "axhline",
     "axvline",
+    "boxplot",
     "ECDF",
     "ecdfplot",
     "facecolor",

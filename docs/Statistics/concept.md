@@ -293,3 +293,82 @@ X_train_scaled = scaler.fit_transform(X_train)
 1. **估计精确性**：标准误差反映了样本统计量（例如样本均值）的估计精确性。标准误差越小，说明样本均值作为总体均值的估计越精确。
 2. **样本大小的影响**：样本大小对标准误差有显著影响。随着样本大小的增加，标准误差会减小，这意味着大样本提供了更精确的总体参数估计。
 3. **不确定性度量**：标准误差可以用于构建置信区间，从而量化样本统计量的估计不确定性。例如，95%的置信区间可以表示为样本均值加减1.96倍的标准误差。
+
+## 经验累积函数 - Empirical Cumulative Distribution Function, ECDF
+
+经验累积分布函数（Empirical Cumulative Distribution Function，ECDF）是用于描述样本数据分布的统计工具。它给出了样本数据中每个值的累积概率。ECDF 是对样本分布函数的估计，在数据分析和统计学中有广泛的应用。
+
+### 关键点
+
+1. **定义**：
+   - 对于给定的样本数据集 \( x_1, x_2, \ldots, x_n \)，ECDF 是一个阶梯函数，定义如下：
+     \[
+     F_n(x) = \frac{1}{n} \sum_{i=1}^{n} I(x_i \leq x)
+     \]
+     其中 \( I \) 是指示函数，当 \( x_i \leq x \) 时 \( I \) 等于 1，否则为 0。
+
+2. **直观理解**：
+   - ECDF 在每个数据点处跳跃，并且在每个数据点 \( x_i \) 处的跳跃幅度为 \( 1/n \)。
+   - ECDF 的值范围从 0 到 1，它表示数据点小于或等于某个值 \( x \) 的比例。
+
+3. **性质**：
+   - 非降函数：ECDF 总是非递减的。
+   - 在最小样本值之前，ECDF 等于 0；在最大样本值之后，ECDF 等于 1。
+   - ECDF 是阶梯函数，每个数据点处有一个跳跃。
+
+4. **应用**：
+   - 用于可视化数据分布：ECDF 提供了关于数据分布的直观图示，便于与理论分布进行比较。
+   - 用于计算百分位数：可以通过 ECDF 轻松计算样本数据的百分位数。
+
+### 示例
+
+假设我们有一个样本数据集 \( [2, 3, 3, 5, 7] \)，我们可以计算并绘制其 ECDF。
+
+#### 计算 ECDF
+
+1. 排序数据集：
+   \[
+   [2, 3, 3, 5, 7]
+   \]
+
+2. 计算每个数据点的累积概率：
+   \[
+   F(2) = \frac{1}{5} = 0.2
+   \]
+   \[
+   F(3) = \frac{3}{5} = 0.6
+   \]
+   \[
+   F(5) = \frac{4}{5} = 0.8
+   \]
+   \[
+   F(7) = 1
+   \]
+
+#### 绘制 ECDF
+
+以下是使用 Python 及 Matplotlib 绘制 ECDF 的代码示例：
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 样本数据
+data = np.array([2, 3, 3, 5, 7])
+
+# 计算 ECDF
+x = np.sort(data)
+y = np.arange(1, len(data) + 1) / len(data)
+
+# 绘制 ECDF
+plt.step(x, y, where='post')
+plt.xlabel('Data points')
+plt.ylabel('ECDF')
+plt.title('Empirical Cumulative Distribution Function')
+plt.grid(True)
+plt.show()
+```
+
+### 总结
+
+ECDF 是一个用于描述样本数据分布的有力工具，通过绘制 ECDF，可以直观地看到数据的分布情况及其累积概率分布。在统计分析中，ECDF 被广泛用于可视化和比较数据分布。

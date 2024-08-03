@@ -1,5 +1,21 @@
 # 统计学常用概念
 
+## 中心极限理论 - Central Limit Theorem, CLT
+
+中心极限理论（Central Limit Theorem, CLT）是概率论中的一个重要定理。它说明了在一定条件下，来自总体的相等大小样本的样本均值的分布将趋向于正态分布，即使总体本身并不是正态分布。具体来说，当从一个具有有限均值和方差的总体中抽取足够大的独立且相等大小的样本时，这些样本均值的分布将近似于正态分布，且样本均值的期望值等于总体的期望值，样本均值的标准差等于总体标准差除以样本大小的平方根。
+
+> The Central Limit Theorem (CLT) is a fundamental theorem in probability theory. It states that, under certain conditions, the distribution of the sample means from a population will approach a normal distribution, even if the population itself is not normally distributed. Specifically, when independent samples of equal size are drawn from a population with a finite mean and variance, the distribution of these sample means will approximate a normal distribution. Furthermore, the expected value of the sample means equals the population mean, and the standard deviation of the sample means equals the population standard deviation divided by the square root of the sample size.
+
+**简而言之, 中心极限理论说的是: 无论总体呈什么样的分布, 样本均值的分布将趋向于正态分布。**
+
+## 大数法则 - The Law of Large Numbers
+
+大数法则是概率论中的一个重要定理，表明在大量重复试验中，样本均值的均值将趋于总体的期望值。具体来说，当独立同分布的随机变量数量（即样本数量）足够大时，这些随机变量的平均值（样本均值的均值）将几乎肯定地接近它们的期望值。大数法则有两种主要形式：弱大数法则和强大数法则。弱大数法则指出，当样本数量无限增加时，样本均值的均值在概率上收敛到总体的期望值。强大数法则则指出，当样本数量无限增加时，样本均值的均值几乎肯定收敛到总体的期望值。
+
+> The Law of Large Numbers is a fundamental theorem in probability theory, which states that as the number of trials in an experiment increases, the mean of the sample means will converge to the expected value of the population. Specifically, when the number of independent and identically distributed (IID) random variables (i.e., the sample size) becomes large, the average of these variables (the mean of the sample means) will almost surely approximate their expected value. There are two main forms of the Law of Large Numbers: the Weak Law of Large Numbers and the Strong Law of Large Numbers. The Weak Law of Large Numbers states that the mean of the sample means converges in probability to the expected value as the sample size tends to infinity. The Strong Law of Large Numbers states that the mean of the sample means almost surely converges to the expected value as the sample size tends to infinity.
+
+**简而言之, 大数法则说的是: 随着样本数量的增加, 样本均值的平均值将趋于总体的期望值。**
+
 ## 正则化 - Regularization
 
 **目的**：

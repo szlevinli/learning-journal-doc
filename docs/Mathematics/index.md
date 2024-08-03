@@ -127,3 +127,35 @@
    \[
    S = \frac{(n-1)n}{2}
    \]
+
+## 自然常数 $e$
+
+关于自然常数 $e$ 的解释可以参考 [An Intuitive Guide To Exponential Functions & e](https://betterexplained.com/articles/an-intuitive-guide-to-exponential-functions-e/) 讲解的非常清晰, 包括 $e$ 的本质, 推导过程以及对 "连续复利公式" 的推导. 中文版可以参考[阮一峰的博客](https://www.ruanyifeng.com/blog/2011/07/mathematical_constant_e.html).
+
+### $e$ 的公式
+
+自然常数 \(e\) 的极限公式如下：
+
+\[ e = \lim_{n \to \infty} \left(1 + \frac{1}{n}\right)^n \]
+
+请注意在上面的公式中,
+
+- 第一个 $1$ 是单位 $1$ 的意思, 就是连续复利增长是从 1 个单位开始分裂的.
+- 第二个 $1$ 是增长率 $100\%$ 的意思, 可以通过数学证明它是不是 1 都可以转化成 1.
+
+### 连续复利公式
+
+公式 \( e^{rt} \) 的正式名称是 **连续复利公式** 或 **自然指数公式**。
+
+> - Continuous Compounding Formula, Natural Exponential Formula
+
+该公式用于描述在连续复利增长情况下，随着时间 \( t \) 和增长率 \( r \) 变化的总金额。具体来说，如果初始金额为 \( P \)，经过时间 \( t \) 后的总金额 \( A \) 可以表示为：
+
+\[ A = P \cdot e^{rt} \]
+
+其中：
+
+- \( P \) 是初始金额。
+- \( r \) 是增长率。
+- \( t \) 是时间。
+- \( e \) 是自然常数，约等于 2.71828。

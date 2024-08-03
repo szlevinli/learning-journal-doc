@@ -141,6 +141,73 @@ X_train_scaled = scaler.fit_transform(X_train)
 
 通过理解期望值和均值的区别和联系，可以更好地应用它们来分析数据和描述随机现象。
 
+## Expected Value vs. Mean: What's the Difference?
+
+- **Expected value** is used when we want to calculate the mean of a probability distribution. This represents the average value we expect to occur before collecting any data.
+- **Mean** is typically used when we want to calculate the average value of a given sample. This represents the average value of raw data that we've already collected.
+
+### Example: Calculating Expected Value
+
+A probability distribution tells us the probability that a random variable takes on certain values.
+
+> 概率分布告诉我们一个随机变量取某个值的概率.
+
+For example, the following probability distribution tells us the probability that a certain soccer team scores a certain number of goals in a given game:
+
+| Goals (X) | Probability P(x) |
+| :-------: | :--------------: |
+|     0     |       0.18       |
+|     1     |       0.34       |
+|     2     |       0.35       |
+|     3     |       0.11       |
+|     4     |       0.02       |
+
+To calculate the expected value of this probability distribution, we can use the following formula:
+
+$$
+\text{Expected Value} = \sum{x \times P(x)}
+$$
+
+where:
+
+- **x**: Data value
+- **P(x)**: Probability of value
+
+$$
+\begin{aligned}
+  \text{Expected Value} &= 0 \times 0.18 + 1 \times 0.34 + 2 \times 0.35 + 3 \times 0.11 + 4 \times 0.02 \\
+                &= 1.45
+\end{aligned}
+$$
+
+因为平均值比较好理解这里就不再说明和举例了.
+
+Let $X$ represent the outcome of a roll of an unbiased six-sided die. The possible values for $X$ are $1,2,3,4,5$ and $6$, each having the probability of occurrence of $1/6$. The expectation value (or expected value) of $X$ is then given by
+
+$$
+\begin{align*}
+(X)\text{expected} &= 1 \cdot \frac{1}{6} + 2 \cdot \frac{1}{6} + 3 \cdot \frac{1}{6} + 4 \cdot \frac{1}{6} + 5 \cdot \frac{1}{6} + 6 \cdot \frac{1}{6} \\
+                   &= \frac{21}{6} \\
+                   &= 3.5
+\end{align*}
+$$
+
+Suppose that in a sequence of ten rolls of the die, if the outcomes are $5,2,6,2,2,1,2,3,6,1$ then the average (arithmetic mean) of the results is given by
+
+$$
+\begin{align*}
+(X)\text{average} &= \frac{(5+2+6+2+2+1+2+3+6+1)}{10} \\
+                  &= 3.0
+\end{align*}
+$$
+
+We say that the average value is $3.0$, with the distance of $0.5$ from the expectation value of $3.5$. If we roll the die $N$ times, where $N$ is very large, then the average will converge to the expected value, i.e., $(X)\text{expected} = (X)\text{average}$. This is evidently because, when $N$ is very large each possible value of $X$ (i.e,. 1 to 6) will occur with equal with equal probability of 1/6, turning the average to the expectation value.
+
+> References:
+>
+> - [WikiPedia](<https://en.wikipedia.org/wiki/Errors_and_residuals#:~:text=The%20error%20(or%20disturbance)%20of,example%2C%20a%20sample%20mean).>)
+> - [stack exchange](https://math.stackexchange.com/questions/904343/what-is-the-difference-between-average-and-expected-value)
+
 ## 参数统计方法 和 非参数统计方法 - Parametric Statistics vs. Non-parametric Statistics
 
 "非参数"和"参数"是统计学中描述方法和模型的一对术语。

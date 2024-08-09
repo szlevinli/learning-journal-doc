@@ -5,6 +5,7 @@
     "axhline",
     "axvline",
     "boxplot",
+    "dowjones",
     "ECDF",
     "ecdfplot",
     "facecolor",

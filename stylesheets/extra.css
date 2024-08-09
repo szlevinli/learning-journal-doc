@@ -1,0 +1,42 @@
+/* Custom colors for a sophisticated look */
+:root {
+  --md-primary: #2c3e50; /* Dark Slate */
+  --md-primary-light: #ecf0f1; /* Light Grey */
+  --md-primary-dark: #1a252f; /* Darker Slate */
+  --md-on-primary: #ffffff; /* White */
+}
+
+table {
+  width: 100% !important; /* Ensure table uses 100% width */
+  border-collapse: collapse;
+  font-family: "Roboto", sans-serif;
+  margin: 20px 0;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 12px 15px;
+  vertical-align: middle; /* Make text vertically centered */
+  border: none !important; /* Remove borders */
+}
+
+/* Apply zebra striping to the table */
+tr:nth-child(even) {
+  background-color: var(--md-primary-light) !important;
+}
+
+/* Style for table headers */
+th {
+  background-color: var(--md-primary) !important;
+  color: var(--md-on-primary) !important;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px !important;
+  border-bottom: 2px solid var(--md-primary-dark) !important;
+}
+
+/* Optional: Add hover effect for table rows */
+tr:hover {
+  background-color: var(--md-primary-light) !important;
+}

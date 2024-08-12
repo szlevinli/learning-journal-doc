@@ -104,3 +104,42 @@ class Solution:
         # 遍历链表发现快指针或快指针的 next 指针为空, 表示没有环出现
         return False
 ```
+
+## 206. Reverse Linked List
+
+!!! Note "算法"
+
+    双指针. 一个指向上前驱节点, 一个指向当前节点
+
+```python
+class ListNode:
+    def __init__(self, x: int) -> None:
+        self.val = x
+        self.next: ListNode | None = None
+
+
+class Solution:
+    def reverseList(self, head: ListNode | None) -> ListNode | None:
+        # 边界检查
+        if head is None or head.next is None:
+            return head
+
+        # 初始化. 前驱节点指针
+        prev = None
+        # 初始化. 当前节点指针
+        current = head
+
+        # 遍历链表
+        while current:
+            # 存储. 后驱节点指针
+            next_node = current.next
+            # 反转当前节点
+            current.next = prev
+            # 移动前驱节点指针到当前节点
+            prev = current
+            # 移动当前节点指针到后驱节点
+            current = next_node
+
+        # 返回
+        return prev
+```

@@ -2,7 +2,7 @@
 
 ## 1. Two Sum
 
-!!! Note "算法"
+!!! Tip
 
     哈希
 
@@ -35,7 +35,7 @@ class Solution:
 
 ## 26. Remove Duplicates from Sorted Array
 
-!!! Note "算法"
+!!! Tip
 
     双指针
 
@@ -64,7 +64,7 @@ class Solution:
 
 ## 141. Linked List Cycle
 
-!!! Note "算法"
+!!! Tip
 
     双指针. 慢指针(一次一步), 快指针(一次两步).
 
@@ -107,7 +107,7 @@ class Solution:
 
 ## 206. Reverse Linked List
 
-!!! Note "算法"
+!!! Tip
 
     双指针. 一个指向上前驱节点, 一个指向当前节点
 
@@ -142,4 +142,78 @@ class Solution:
 
         # 返回
         return prev
+```
+
+## 21. Merge Two Sorted Lists
+
+!!! Tip
+
+    双指针合并算法 (Two-Pointer Merge Algorithm).
+
+!!! Quote 一开始的思路
+
+    - 处理边界.
+        - list1 or list2 is None
+        - list1.next or list2.next is None
+    - 初始化两个指针分别指向两个链表的头部. p1, p2
+    - 遍历 list1
+        - p2 is None, 表示 list2 已到底, 将 list1 append 到 list2 之后, 终止遍历 返回 list2
+        - p1.val >= p2.val, 删除 list1 当前节点并将该节点插入 list2 当前节点之后
+        - p1.val < p2.val, 删除 list1 当前节点并将该节点插入 list2 当前节点之前
+    - 返回 list2
+
+**上面的思路有问题, 重新梳理后的**
+
+- 边界处理
+  - list1 is None, return list2
+  - list2 is None, return list1
+- 初始化
+  - 创建一个虚拟节点 dummy
+  - 创建一个 current 指针指向 dummy
+- 合并链表
+  - 使用 `while` 循环遍历两个链表, 直到其中一个到达尾部
+  - 比较两个链表当前节点值, 将较小值的节点接到 current 之后, 并将相应链表的指针前进一位
+  - 将 current 指针移动到新添加的节点
+- 处理剩余节点
+  - 循环结束后, 如果还有未处理的节点, 直接将这些节点接到 current 之后
+- 返回合并后的链表:
+  - 返回 `dummy.next`, 因为 `dummy` 是一个虚拟头节点.
+
+```python
+class ListNode:
+    def __init__(self, val=0, next=None) -> None:
+        self.val = val
+        self.next: ListNode | None = next
+
+
+class Solution:
+    def mergeTwoList(
+        self, list1: ListNode | None, list2: ListNode | None
+    ) -> ListNode | None:
+        # 创建虚拟节点
+        dummy = ListNode()
+        # 创建 "当前" 指针指向虚拟节点
+        current = dummy
+
+        # 遍历 list 和 list2 直到其中任意一个到达尾部
+        while list1 and list2:
+            # list1 当前节点值 小于等于 list2 当前节点值
+            if list1.val <= list2.val:
+                # list1 接到 current 之后
+                current.next = list1
+                # list1 向前一步
+                list1 = list1.next
+            else:
+                # list2 接到 current 之后
+                current.next = list2
+                # list2 向前一步
+                list2 = list2.next
+            # current 移动到新添加的节点上
+            current = current.next
+
+        # 处理剩余节点
+        current.next = list1 if list1 is not None else list2
+
+        # 返回
+        return dummy.next
 ```

@@ -217,3 +217,67 @@ class Solution:
         # 返回
         return dummy.next
 ```
+
+## 234. Palindrome Linked List
+
+!!! Tip
+
+    双指针. 快慢指针. 快速定位链表中心点.
+
+这里首先要说明, 在 LeetCode 的官方题解中它使用将链表值转存到数组中然后反转数组进行比较. 但是, 这种解法虽然简单, 但是空间复杂度非常不理想, 所以下面将采用双指针的快慢指针来找到链表的中心点, 并对后半部分链表进行原地反转, 最后前后两部分链表节点一一比对. 这种双指针的算法空间复杂度可以降至 $O(1)$, 时间复杂度仍然保持 $O(n)$.
+
+双指针的快慢指针有一个核心点, 可以在 $O(\frac{2}{n})$ 时间内找到中心点, 快指针一次两步, 慢指针一次一步, 当快指针抵达链表尾部时, 慢指针所在位置即为链表的中心点. 其中奇数链表慢指针所指节点为中心点, 偶数链表慢指针所指节点为上半部链表的尾节点.
+
+同时, 我们还能根据快指针 (`fast`) 来判断原链表的奇偶性, `fast is None` 表示链表是偶数链表, `fast.next is None` 表示链表是奇数链表.
+
+!!! Warning 注意
+
+    实际上原链表的奇偶性并不影响整个代码, 换句话说, 无需考虑奇偶性.
+
+    例如: 
+    
+    - `[1, 2, 3, 4, 5]` 后半部分的链表是 `[5, 4, 3]`, 前半部分链表是 `[1, 2, 3, 4, 5]`
+    - `[1, 2, 3, 4]` 后半部分的链表是 `[4, 3]`, 前半部分链表是 `[1, 2, 3, 4]`
+
+    前半部分链表实际是原链表
+
+```python
+class ListNode:
+    def __init__(self, val=0, next=None) -> None:
+        self.val = val
+        self.next: ListNode | None = next
+
+
+class Solution:
+    def isPalindrome(self, head: ListNode | None) -> bool:
+        # None 也是回文
+        if head is None:
+            return True
+
+        # 使用快慢指针找到链表中心点
+        slow = head
+        fast = head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        # 反转后半部分链表
+        prev = None
+        while slow:
+            next_node = slow.next
+            slow.next = prev
+            prev = slow
+            slow = next_node
+
+        # 比较两部分链表
+        left = head
+        right = prev
+        # 遍历后半部分.
+        while right:
+            if left.val != right.val:
+                return False
+            left = left.next
+            right = right.next
+
+        return True
+```

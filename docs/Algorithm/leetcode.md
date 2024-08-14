@@ -281,3 +281,35 @@ class Solution:
 
         return True
 ```
+
+## 20. Valid Parentheses
+
+!!! Tip
+
+    栈
+
+```python
+class Solution:
+    def isValid(self, s: str) -> bool:
+        # 初始化栈
+        stack = []
+        # 初始化 "括号" 映射字典
+        brackets_map = {"(": ")", "{": "}", "[": "]"}
+
+        # 遍历字符串
+        for char in s:
+            # 字符在映射字典的keys中
+            if char in brackets_map:
+                # 入栈
+                stack.append(char)
+            # 字符在映射字典的values中
+            elif char in brackets_map.values():
+                # 出栈匹配
+                if stack == [] or brackets_map[stack.pop()] != char:
+                    return False
+            else:
+                continue
+
+        # 栈为空表示匹配成功
+        return stack == []
+```

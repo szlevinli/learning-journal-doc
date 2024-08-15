@@ -313,3 +313,35 @@ class Solution:
         # 栈为空表示匹配成功
         return stack == []
 ```
+
+## 155. Min Stack
+
+!!! Tip
+
+    辅助栈
+
+通过维护一个辅助栈 min_stack 来追踪当前栈中元素的最小值，并确保每次 push 和 pop 操作都能正确更新最小值。这样，在 getMin() 操作时可以在 O(1) 时间复杂度内返回当前的最小值。
+
+```python
+class MinStack:
+    def __init__(self) -> None:
+        self.min_stack = []
+        self.stack = []
+
+    def push(self, val: int) -> None:
+        self.stack.append(val)
+        if self.min_stack:
+            self.min_stack.append(min(val, self.min_stack[-1]))
+        else:
+            self.min_stack.append(val)
+
+    def pop(self) -> None:
+        self.stack.pop()
+        self.min_stack.pop()
+
+    def top(self) -> int:
+        return self.stack[-1]
+
+    def getMin(self) -> int:
+        return self.min_stack[-1]
+```

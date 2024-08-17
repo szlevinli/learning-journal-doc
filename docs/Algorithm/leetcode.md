@@ -344,3 +344,84 @@ class MinStack:
     def getMin(self) -> int:
         return self.min_stack[-1]
 ```
+
+## 232. Implement Queue using Stacks
+
+!!! Tip
+
+    双栈设计. `pop` 操作需要判断 `pop_stack` 是否为空.
+
+```python
+class MyQueue:
+
+    def __init__(self):
+        self.push_stack = []
+        self.pop_stack = []
+
+    def push(self, x: int) -> None:
+        self.push_stack.append(x)
+
+    def pop(self) -> int:
+        if len(self.pop_stack) == 0:
+            self._move()
+        return self.pop_stack.pop()
+
+    def peek(self) -> int:
+        if len(self.pop_stack) == 0:
+            self._move()
+        return self.pop_stack[-1]
+
+    def empty(self) -> bool:
+        return not self.push_stack and not self.pop_stack
+
+    def _move(self) -> None:
+        while self.push_stack:
+            self.pop_stack.append(self.push_stack.pop())
+```
+
+## 225. Implement Stack using Queues
+
+!!! Tip
+
+    双队列. `pop` 和 `top` 需要移动队列(留最后一个元素), 交换队列
+
+开始我以为和上面的 232 题目一样, 但是他们完全是不同的, 用双队列实现栈代价比双栈实现队列要大的多, 因为 `pop` 和 `top` 需要每次都移动一次队列中的元素.
+
+```python
+from collections import deque
+
+
+class MyStack:
+
+    def __init__(self):
+        self.push_queue = deque()
+        self.pop_queue = deque()
+
+    def push(self, x: int) -> None:
+        self.push_queue.append(x)
+
+    def pop(self) -> int:
+        # 转移队列中的元素, 保留最后一个
+        while len(self.push_queue) > 1:
+            self.pop_queue.append(self.push_queue.popleft())
+        # 队列交换
+        self.push_queue, self.pop_queue = self.pop_queue, self.push_queue
+        # 弹出并返回上面保留的最后一个元素
+        return self.pop_queue.popleft()
+
+    def top(self) -> int:
+        # 转移队列中的元素, 保留最后一个
+        while len(self.push_queue) > 1:
+            self.pop_queue.append(self.push_queue.popleft())
+        # 队列交换
+        self.push_queue, self.pop_queue = self.pop_queue, self.push_queue
+        # 弹出上面保留的最后一个元素
+        top_element = self.pop_queue.popleft()
+        # 将最后一个元素插回队列
+        self.push_queue.append(top_element)
+        # 返回最后一个元素
+        return top_element
+
+    def empty(self) -> bool:
+        return not self.pop_queue and not self.push_queue
+```

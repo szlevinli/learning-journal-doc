@@ -425,3 +425,50 @@ class MyStack:
     def empty(self) -> bool:
         return not self.pop_queue and not self.push_queue
 ```
+
+## 349. Intersection of Two Arrays
+
+!!! Tip
+
+    利用 python 内建的 `set`. 用短数组构建 `set`, 遍历长数组.
+
+```python
+class solution:
+    def intersection(self, nums1: list[int], nums2: list[int]) -> list[int]:
+        shorter = nums1
+        longer = nums2
+
+        if len(nums1) > len(nums2):
+            shorter, longer = longer, shorter
+
+        shorter_set = set(shorter)
+        return list({v for v in longer if v in shorter_set})
+```
+
+## 350. Intersection of Two Arrays II
+
+!!! Tip
+
+    利用 python 内建的 `dict`. 用短数组构建 `dict` 字典, 字典的 `key` 是数组的元素, 字典的值为该元素出现的次数. 遍历长数组判断是否存在在 `dict` 且出现次数大于零, 满足条件的插入返回列表并将出现次数减一.
+
+```python
+class Solution:
+    def intersection(self, nums1: list[int], nums2: list[int]) -> list[int]:
+        shorter = nums1
+        longer = nums2
+
+        if len(nums1) > len(nums2):
+            shorter, longer = longer, shorter
+
+        hash_map = {}
+        for v in shorter:
+            hash_map[v] = hash_map.get(v, 0) + 1
+
+        result = []
+        for v in longer:
+            if hash_map.get(v, 0) > 0:
+                result.append(v)
+                hash_map[v] -= 1
+
+        return result
+```

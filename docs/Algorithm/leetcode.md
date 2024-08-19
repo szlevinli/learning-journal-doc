@@ -472,3 +472,30 @@ class Solution:
 
         return result
 ```
+
+## 36. Valid Sudoku
+
+!!! Tip
+
+    使用 HashTable 将每行, 每列, 每个子宫格作为 key, set 作为值. 这里有个技巧, 可以采用 `//` 来分组子宫格.
+
+```python
+class Solution:
+    def isValidSudoku(self, board: list[list[str]]) -> bool:
+        hash_map = {}
+
+        for i in range(len(board)):
+            for j in range(len(board[i])):
+                v = board[i][j]
+                if v.isdigit():
+                    row_key = f"row_{i}"
+                    col_key = f"col_{j}"
+                    sub_boxes_key = (i // 3, j // 3)
+                    for key in [row_key, col_key, sub_boxes_key]:
+                        if v in hash_map.get(key, set()):
+                            return False
+                        else:
+                            hash_map.setdefault(key, set()).add(v)
+
+        return True
+```

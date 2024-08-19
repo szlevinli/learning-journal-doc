@@ -1,18 +1,21 @@
 # Visualizing distributions of Data
 
 - **axes-level functions**: 这些是作用于单个坐标轴的函数，可以单独使用来创建图表。
-    - **histplot()**: 用于绘制直方图，展示数据的分布情况。
-    - **kdeplot()**: 用于绘制核密度估计图，平滑地展示数据的分布。
-    - **ecdfplot()**: 用于绘制经验累积分布函数图，展示数据的累积分布情况。
-    - **rugplot()**: 用于绘制地毯图，通过在轴上标记数据点的位置来展示数据的分布。
+  - **histplot()**: 用于绘制直方图，展示数据的分布情况。
+  - **kdeplot()**: 用于绘制核密度估计图，平滑地展示数据的分布。
+  - **ecdfplot()**: 用于绘制经验累积分布函数图，展示数据的累积分布情况。
+  - **rugplot()**: 用于绘制地毯图，通过在轴上标记数据点的位置来展示数据的分布。
 - **figure-level functions**: 这些函数在更高层次上工作，可以组合多个坐标轴来创建复杂的图表。
-    - **displot()**: 这个函数可以组合上述的axes-level函数，在一个图表中展示数据的分布。
-    - **jointplot()**: 用于绘制两个变量的联合分布以及它们各自的边际分布。
-    - **pairplot()**: 用于绘制数据集中所有变量的成对分布，以及它们的单变量分布。
+  - **displot()**: 这个函数可以组合上述的axes-level函数，在一个图表中展示数据的分布。
+  - **jointplot()**: 用于绘制两个变量的联合分布以及它们各自的边际分布。
+  - **pairplot()**: 用于绘制数据集中所有变量的成对分布，以及它们的单变量分布。
+
 
 ## Plotting univariate histograms - 绘制单变量柱状图
 
 横轴代表变量, 纵轴表示观察到的数量.
+
+
 
 ```python
 import pandas as pd
@@ -24,17 +27,28 @@ import matplotlib.pyplot as plt
 sns.set_theme()
 ```
 
+
 ```python
 penguins = pd.read_csv("../../data/penguins.csv")
 ```
+
 
 ```python
 sns.displot(data=penguins, x="flipper_length_mm")
 ```
 
+
+
+
     <seaborn.axisgrid.FacetGrid at 0x140da8b30>
 
+
+
+
+    
 ![png](distributions_resources/output_4_1.png)
+    
+
 
 通过绘制直方图，我们能够立即获得关于“flipper_length_mm”（企鹅的鳍长，单位为毫米）这一变量的一些直观信息。具体来说，我们可以观察到大约195毫米的鳍长是最常见的，但是这个数据的分布是双峰的（bimodal），这意味着单一的数字（如最常见的鳍长）并不能完全代表整个数据集的特征。
 
@@ -44,9 +58,11 @@ sns.displot(data=penguins, x="flipper_length_mm")
 
 我们可以通过设置 `bins`, `discrete` 参数解决 "变量的取值范围相对较小，并且是整数" 导致柱状图过于分散的问题.
 
+
 ```python
 tips = pd.read_csv("../../data/tips.csv")
 ```
+
 
 ```python
 fig = mpl.figure.Figure(figsize=(16, 4))
@@ -61,7 +77,14 @@ so.Plot(tips, x="size").add(so.Bar(), so.Hist(discrete=True)).on(sf3).label(
 ).plot()
 ```
 
+
+
+
+    
 ![png](distributions_resources/output_8_0.png)
+    
+
+
 
 ### Conditioning on other variables
 
@@ -77,6 +100,7 @@ so.Plot(tips, x="size").add(so.Bar(), so.Hist(discrete=True)).on(sf3).label(
 
 这种方法强调了变量之间的部分-整体关系，但可能会掩盖其他特征（例如，可能难以确定Adelie企鹅分布的模式）。因此，选择哪种方式来展示条件子集的直方图，需要根据具体的数据和分析目的来决定。
 
+
 ```python
 fig = mpl.figure.Figure(figsize=(10, 4))
 (sf1, sf2) = fig.subfigures(1, 2)
@@ -90,7 +114,14 @@ so.Plot(penguins, x="flipper_length_mm", color="species").add(
 ).on(sf2).label(title="Stack").plot()
 ```
 
+
+
+
+    
 ![png](distributions_resources/output_10_0.png)
+    
+
+
 
 ### Normalized histogram statistics
 
@@ -105,6 +136,7 @@ so.Plot(penguins, x="flipper_length_mm", color="species").add(
 然而，如果将`common_norm`参数设置为`False`，每个子集（在这个上下文中指的是不同种类的企鹅）将独立地进行标准化。这意味着每个子集的条形图的高度将根据它们自己内部的分布来调整，而不是相对于整个数据集。这样做可以更公平地比较不同子集的分布，即使它们的观测数量不平等。
 
 简而言之，`common_norm=True`（默认设置）会将所有数据作为一个整体来标准化，而`common_norm=False`会让每个子集独立地进行标准化。
+
 
 ```python
 fig, axes = plt.subplots(1, 2, figsize=(10, 4))
@@ -129,58 +161,65 @@ sns.histplot(
 axes[1].set_title("common_norm=False")
 ```
 
+
+
+
     Text(0.5, 1.0, 'common_norm=False')
 
+
+
+
+    
 ![png](distributions_resources/output_12_1.png)
+    
+
 
 在统计学和数据可视化中，归一化（normalization）的方法有多种，每种方法的目的不同，适用于不同的场景。除了 `density` 归一化方法外，以下是一些常见的归一化方法：
 
 - **Proportion (比例归一化)**
-    - **定义**: 将每个数据点的值转换为它在数据集中的相对比例，使得所有数据点的比例总和为 1。
-    - **应用**: 这种方法常用于直方图或条形图，特别是在 `stat="proportion"` 的情况下。例如，将每个 bin 中的频数除以总频数。
-    - **示例**: 在 Seaborn 中，使用 `stat="proportion"` 来绘制比例归一化的直方图。
-
+   - **定义**: 将每个数据点的值转换为它在数据集中的相对比例，使得所有数据点的比例总和为 1。
+   - **应用**: 这种方法常用于直方图或条形图，特别是在 `stat="proportion"` 的情况下。例如，将每个 bin 中的频数除以总频数。
+   - **示例**: 在 Seaborn 中，使用 `stat="proportion"` 来绘制比例归一化的直方图。
    ```python
    sns.histplot(data=penguins, x="flipper_length_mm", hue="species", stat="proportion")
    ```
 
 - **Cumulative (累积归一化)**
-    - **定义**: 将每个数据点的值转化为累积值，即当前值加上所有前面数据点的值。结果是一个从 0 到 1 的累计分布。
-    - **应用**: 这种方法用于累积直方图或累积分布函数 (CDF)，用于查看数据的累积分布。
-    - **示例**: 在 Seaborn 中，使用 `stat="density"` 和 `cumulative=True` 来绘制累积分布图。
-
+   - **定义**: 将每个数据点的值转化为累积值，即当前值加上所有前面数据点的值。结果是一个从 0 到 1 的累计分布。
+   - **应用**: 这种方法用于累积直方图或累积分布函数 (CDF)，用于查看数据的累积分布。
+   - **示例**: 在 Seaborn 中，使用 `stat="density"` 和 `cumulative=True` 来绘制累积分布图。
    ```python
    sns.histplot(data=penguins, x="flipper_length_mm", hue="species", stat="density", cumulative=True)
    ```
 
 - **Count (计数归一化)**
-    - **定义**: 这种方法直接显示数据的计数（频数），不进行任何归一化处理。
-    - **应用**: 默认情况下，直方图会使用这种方法来展示每个 bin 中的数据点数量。
-    - **示例**: 在 Seaborn 中，默认情况下 `stat="count"`。
-
+   - **定义**: 这种方法直接显示数据的计数（频数），不进行任何归一化处理。
+   - **应用**: 默认情况下，直方图会使用这种方法来展示每个 bin 中的数据点数量。
+   - **示例**: 在 Seaborn 中，默认情况下 `stat="count"`。
    ```python
    sns.histplot(data=penguins, x="flipper_length_mm", hue="species")
    ```
 
 - **Frequency (频率归一化)**
-    - **定义**: 将每个 bin 的频数除以 bin 的宽度，使得直方图的总面积等于频数总和。
-    - **应用**: 在一些情况下，与 `density` 类似，但通常是当 bin 宽度不等时使用。
-    - **注意**: Seaborn 没有专门的 `stat="frequency"`，但你可以通过修改 bin 宽度来达到类似效果。
+   - **定义**: 将每个 bin 的频数除以 bin 的宽度，使得直方图的总面积等于频数总和。
+   - **应用**: 在一些情况下，与 `density` 类似，但通常是当 bin 宽度不等时使用。
+   - **注意**: Seaborn 没有专门的 `stat="frequency"`，但你可以通过修改 bin 宽度来达到类似效果。
 
 - **Z-score 标准化**
-    - **定义**: 将数据的均值移除，并将数据缩放到以标准差为单位的范围内。公式为 `(x - mean) / std`。
-    - **应用**: 在机器学习和统计分析中广泛使用，以标准化数据以消除量纲差异。
-    - **注意**: Seaborn 不直接支持 `Z-score` 标准化，可以通过 Pandas 或 Numpy 预处理数据后再进行可视化。
+   - **定义**: 将数据的均值移除，并将数据缩放到以标准差为单位的范围内。公式为 `(x - mean) / std`。
+   - **应用**: 在机器学习和统计分析中广泛使用，以标准化数据以消除量纲差异。
+   - **注意**: Seaborn 不直接支持 `Z-score` 标准化，可以通过 Pandas 或 Numpy 预处理数据后再进行可视化。
 
 - **Min-Max 归一化**
-    - **定义**: 将数据缩放到 [0, 1] 的范围内，公式为 `(x - min) / (max - min)`。
-    - **应用**: 常用于将特征值缩放到统一范围，以便比较或输入到机器学习算法中。
-    - **注意**: 需要在绘图前对数据进行预处理，Seaborn 不直接提供这种标准化。
+   - **定义**: 将数据缩放到 [0, 1] 的范围内，公式为 `(x - min) / (max - min)`。
+   - **应用**: 常用于将特征值缩放到统一范围，以便比较或输入到机器学习算法中。
+   - **注意**: 需要在绘图前对数据进行预处理，Seaborn 不直接提供这种标准化。
 
 - **Log 归一化**
-    - **定义**: 将数据的对数值作为新值，常用于处理具有长尾分布的数据。
-    - **应用**: 在可视化数据的乘法或指数关系时特别有用，能够压缩数据范围。
-    - **注意**: 需要在绘图前对数据进行预处理。
+   - **定义**: 将数据的对数值作为新值，常用于处理具有长尾分布的数据。
+   - **应用**: 在可视化数据的乘法或指数关系时特别有用，能够压缩数据范围。
+   - **注意**: 需要在绘图前对数据进行预处理。
+
 
 **"量纲差异"（Dimensional Difference）** 指的是在数据集中的不同特征（变量）之间，由于它们的单位或尺度不同，导致它们的数值范围差异很大。例如：
 
@@ -216,16 +255,16 @@ axes[1].set_title("common_norm=False")
 Step 1: 计算频数和频率
 
 - **频数**（frequency）：每个数据点出现的次数：
-    - 数据点 `1` 出现 `2` 次
-    - 数据点 `2` 出现 `2` 次
-    - 数据点 `3` 出现 `3` 次
-    - 数据点 `4` 出现 `4` 次
+  - 数据点 `1` 出现 `2` 次
+  - 数据点 `2` 出现 `2` 次
+  - 数据点 `3` 出现 `3` 次
+  - 数据点 `4` 出现 `4` 次
 
 - **频率**（relative frequency）：每个数据点的频数除以总数据点数 `11`：
-    - 数据点 `1` 的频率：`2/11 ≈ 0.1818`
-    - 数据点 `2` 的频率：`2/11 ≈ 0.1818`
-    - 数据点 `3` 的频率：`3/11 ≈ 0.2727`
-    - 数据点 `4` 的频率：`4/11 ≈ 0.3636`
+  - 数据点 `1` 的频率：`2/11 ≈ 0.1818`
+  - 数据点 `2` 的频率：`2/11 ≈ 0.1818`
+  - 数据点 `3` 的频率：`3/11 ≈ 0.2727`
+  - 数据点 `4` 的频率：`4/11 ≈ 0.3636`
 
 Step 2: 计算密度
 
@@ -237,18 +276,18 @@ Step 2: 计算密度
 现在，我们计算每个 bin 的密度：
 
 - **bin 1**：
-    - 频数：`2`（数据点 `1`）+ `2`（数据点 `2`）= `4`
-    - bin 的宽度：`2`
-    - 密度计算：
+  - 频数：`2`（数据点 `1`）+ `2`（数据点 `2`）= `4`
+  - bin 的宽度：`2`
+  - 密度计算：
 
 $$
 \text{density} = \frac{\text{频数}}{\text{总样本数} \times \text{bin 宽度}} = \frac{4}{11 \times 2} ≈ 0.1818
 $$
 
 - **bin 2**：
-    - 频数：`3`（数据点 `3`）+ `4`（数据点 `4`）= `7`
-    - bin 的宽度：`2`
-    - 密度计算：
+  - 频数：`3`（数据点 `3`）+ `4`（数据点 `4`）= `7`
+  - bin 的宽度：`2`
+  - 密度计算：
 
 $$
 \text{density} = \frac{7}{11 \times 2} ≈ 0.3182
@@ -279,13 +318,23 @@ Step 3: 解释频率与密度的区别
 
 总结来说，直方图和KDE两种方法用于估计数据的分布情况，其中直方图通过分组计数来近似概率密度函数，而KDE则通过平滑数据点来生成连续的密度估计。
 
+
 ```python
 sns.displot(penguins, x="flipper_length_mm", kind="kde")
 ```
 
+
+
+
     <seaborn.axisgrid.FacetGrid at 0x1469de3f0>
 
+
+
+
+    
 ![png](distributions_resources/output_17_1.png)
+    
+
 
 ### Choosing the smoothing bandwidth
 
@@ -298,6 +347,7 @@ sns.displot(penguins, x="flipper_length_mm", kind="kde")
 - **检查估计的稳健性**：为了确保KDE估计的准确性，可以通过调整默认的带宽来检查估计结果的稳健性。稳健性是指估计结果对带宽变化的敏感程度。
 - **调整默认带宽**：可以通过修改`bw_adjust`参数来调整带宽，从而观察不同带宽设置下KDE的估计结果，以找到最合适的带宽值。
 
+
 ```python
 fig, axes = plt.subplots(1, 2, figsize=(10, 4))
 
@@ -308,9 +358,18 @@ sns.kdeplot(penguins, x="flipper_length_mm", bw_adjust=2, ax=axes[1])
 axes[1].set_title("bw_adjust=2")
 ```
 
+
+
+
     Text(0.5, 1.0, 'bw_adjust=2')
 
+
+
+
+    
 ![png](distributions_resources/output_19_1.png)
+    
+
 
 ### Conditioning on other variables
 
@@ -318,13 +377,24 @@ axes[1].set_title("bw_adjust=2")
 
 具体来说，“hue variable”指的是用于区分不同类别或组的变量。例如，在分析企鹅数据集时，如果将“species”（物种）作为颜色变量，那么对于每个企鹅物种，都会计算并绘制一个单独的核密度估计图。这样，不同的物种的分布情况可以通过颜色区分开来，便于比较和分析。
 
+
 ```python
 sns.displot(penguins, x="flipper_length_mm", hue="species", kind="kde")
 ```
 
+
+
+
     <seaborn.axisgrid.FacetGrid at 0x14650a1e0>
 
+
+
+
+    
 ![png](distributions_resources/output_21_1.png)
+    
+
+
 
 ```python
 sns.displot(
@@ -332,25 +402,54 @@ sns.displot(
 )
 ```
 
+
+
+
     <seaborn.axisgrid.FacetGrid at 0x146c79ca0>
 
+
+
+
+    
 ![png](distributions_resources/output_22_1.png)
+    
+
+
 
 ```python
 sns.displot(penguins, x="flipper_length_mm", hue="species", kind="kde", fill=True)
 ```
 
+
+
+
     <seaborn.axisgrid.FacetGrid at 0x146500fb0>
 
+
+
+
+    
 ![png](distributions_resources/output_23_1.png)
+    
+
+
 
 ```python
 sns.displot(penguins, x="flipper_length_mm", col="species", kind="kde")
 ```
 
+
+
+
     <seaborn.axisgrid.FacetGrid at 0x146503140>
 
+
+
+
+    
 ![png](distributions_resources/output_24_1.png)
+    
+
 
 ### Kernel density estimation pitfalls
 
@@ -363,21 +462,41 @@ sns.displot(penguins, x="flipper_length_mm", col="species", kind="kde")
 
 - **变量自然受限**：当变量反映的是一个自然受限的数量时，比如一个不能为负的变量，这种假设就可能不成立。如果观察值靠近这个界限（例如，一个不能为负的变量的较小值），KDE曲线可能会延伸到不切实际的值。
 
+
 ```python
 sns.displot(tips, x="total_bill", kind="kde")
 ```
 
+
+
+
     <seaborn.axisgrid.FacetGrid at 0x146dd9ca0>
 
+
+
+
+    
 ![png](distributions_resources/output_26_1.png)
+    
+
+
 
 ```python
 sns.displot(tips, x="total_bill", kind="kde", cut=0)
 ```
 
+
+
+
     <seaborn.axisgrid.FacetGrid at 0x146e2e150>
 
+
+
+
+    
 ![png](distributions_resources/output_27_1.png)
+    
+
 
 上面的图表展示了数据会出现小于0的数据, 这明显不符合常识, 这就是因为 KDE 的问题.
 
@@ -393,6 +512,7 @@ sns.displot(tips, x="total_bill", kind="kde", cut=0)
 2. KDE总是显示平滑曲线，即使数据本身并不平滑。
 3. 即使在数据分布不平滑的情况下，KDE也可能显示出误导性的平滑曲线。
 
+
 ```python
 diamonds = pd.read_csv("../../data/diamonds.csv")
 
@@ -405,9 +525,18 @@ sns.histplot(diamonds, x="carat", kde=True, ax=axes[1])
 axes[1].set_title("Histogram")
 ```
 
+
+
+
     Text(0.5, 1.0, 'Histogram')
 
+
+
+
+    
 ![png](distributions_resources/output_29_1.png)
+    
+
 
 ## Empirical cumulative distributions
 
@@ -420,21 +549,41 @@ ECDF（经验累积分布函数）图有两个主要优势。与直方图或核�
 3. **单调递增的曲线**：ECDF图的曲线是单调递增的，即从左到右，曲线的y值不会下降。这使得ECDF图非常适合用来比较不同数据集的分布情况，因为它直观地展示了数据点在不同分布中的累积比例。
 4. **适合比较多个分布**：由于ECDF图的单调递增特性，我们可以很容易地比较不同数据集的分布情况。例如，如果两个ECDF曲线在某个点交叉，这意味着在该点左侧，一个数据集有更多小值，而在该点右侧，另一个数据集有更多大值。这种比较在直方图或KDE图中可能不那么直观。
 
+
 ```python
 sns.displot(penguins, x="flipper_length_mm", kind="ecdf")
 ```
 
+
+
+
     <seaborn.axisgrid.FacetGrid at 0x146a5a4e0>
 
+
+
+
+    
 ![png](distributions_resources/output_31_1.png)
+    
+
+
 
 ```python
 sns.displot(penguins, x="flipper_length_mm", hue="species", kind="ecdf")
 ```
 
+
+
+
     <seaborn.axisgrid.FacetGrid at 0x146fb4620>
 
+
+
+
+    
 ![png](distributions_resources/output_32_1.png)
+    
+
 
 经验累积分布函数（ECDF）绘图的主要缺点.
 
@@ -453,6 +602,7 @@ sns.displot(penguins, x="flipper_length_mm", hue="species", kind="ecdf")
 1. **双变量直方图**：这种图表通过在图中划分矩形区域（bin）来组织数据，每个矩形区域代表数据的一个子集。然后，根据每个矩形区域内观察值的数量，使用填充颜色来展示。这与热图（heatmap）相似，热图中颜色的深浅表示数据点的密集程度。
 2. **双变量核密度估计（KDE）图**：与直方图不同，KDE图使用二维高斯函数来平滑处理(x, y)坐标上的观察值。这可以更好地展示数据点的分布，因为它可以平滑地过渡数据点，而不是将它们限制在固定的矩形区域内。默认情况下，KDE图会展示二维密度的等高线（contours），这些等高线表示了数据点分布的边界或区域。
 
+
 ```python
 fig, axes = plt.subplots(1, 2, figsize=(10, 4))
 
@@ -463,9 +613,18 @@ sns.kdeplot(penguins, x="flipper_length_mm", y="bill_depth_mm", ax=axes[1])
 axes[1].set_title("Bivariate KDE")
 ```
 
+
+
+
     Text(0.5, 1.0, 'Bivariate KDE')
 
+
+
+
+    
 ![png](distributions_resources/output_35_1.png)
+    
+
 
 **双变量直方图**
 
@@ -481,6 +640,7 @@ axes[1].set_title("Bivariate KDE")
 
 同时上面两张图都展示出数据具有双峰性.
 
+
 ```python
 fig, axes = plt.subplots(1, 2, figsize=(10, 4))
 
@@ -495,9 +655,15 @@ sns.kdeplot(
 axes[1].set_title("Bivariate KDE")
 ```
 
+
     Text(0.5, 1.0, 'Bivariate KDE')
 
+
+
+    
 ![png](distributions_resources/output_37_1.png)
+    
+
 
 ### 等高线的原理
 
@@ -511,6 +677,7 @@ axes[1].set_title("Bivariate KDE")
 
 最终结果 x：
 x 是一个包含600个数据点的数组，其中前300个数据点是来自均值为 -2，标准差为 1 的正态分布，后300个数据点是来自均值为 2，标准差为 1 的正态分布。这使得 x 的数据分布呈现出两个明显的中心，一个在 -2 附近，另一个在 2 附近。这种构造方法通常用于模拟双峰分布（bimodal distribution），即数据集中存在两个峰值的情况。
+
 
 ```python
 import numpy as np
@@ -538,7 +705,11 @@ plt.title("Bivariate KDE Plot Example")
 plt.show()
 ```
 
+
+    
 ![png](distributions_resources/output_39_0.png)
+    
+
 
 图解与解释：
 假设我们生成了上面的图，你会看到一个双变量KDE图，它由一些封闭的曲线组成，这些曲线形成了不同大小的“圈”，类似于地形图上的等高线。
@@ -561,6 +732,7 @@ plt.show()
 
 双变量直方图允许一个或两个变量是离散的。绘制一个离散变量和一个连续变量提供了另一种比较条件单变量分布的方法。
 
+
 ```python
 fig, axes = plt.subplots(1, 2, figsize=(10, 4))
 
@@ -571,9 +743,18 @@ sns.histplot(diamonds, x="color", y="clarity", ax=axes[1])
 axes[1].set_title("Both Discrete")
 ```
 
+
+
+
     Text(0.5, 1.0, 'Both Discrete')
 
+
+
+
+    
 ![png](distributions_resources/output_42_1.png)
+    
+
 
 ## Distribution visualization in other settings
 
@@ -587,13 +768,24 @@ axes[1].set_title("Both Discrete")
 
 在代码示例中，`jointplot()`被用来绘制企鹅数据集中的喙长度（`bill_length_mm`）和喙深度（`bill_depth_mm`）之间的关系，并且默认情况下，这种关系是通过散点图来表示的，而两个变量各自的分布则是通过直方图来展示的。
 
+
 ```python
 sns.jointplot(data=penguins, x="bill_length_mm", y="bill_depth_mm")
 ```
 
+
+
+
     <seaborn.axisgrid.JointGrid at 0x14895b470>
 
+
+
+
+    
 ![png](distributions_resources/output_44_1.png)
+    
+
+
 
 ```python
 sns.jointplot(
@@ -601,9 +793,19 @@ sns.jointplot(
 )
 ```
 
+
+
+
     <seaborn.axisgrid.JointGrid at 0x148b41760>
 
+
+
+
+    
 ![png](distributions_resources/output_45_1.png)
+    
+
+
 
 ```python
 g = sns.JointGrid(data=penguins, x="bill_length_mm", y="bill_depth_mm")
@@ -611,26 +813,55 @@ g.plot_joint(sns.histplot)
 g.plot_marginals(sns.boxplot)
 ```
 
+
+
+
     <seaborn.axisgrid.JointGrid at 0x148d3caa0>
 
+
+
+
+    
 ![png](distributions_resources/output_46_1.png)
+    
+
+
 
 ```python
 sns.displot(penguins, x="bill_length_mm", y="bill_depth_mm", kind="kde", rug=True)
 ```
 
+
+
+
     <seaborn.axisgrid.FacetGrid at 0x148ec4f20>
 
+
+
+
+    
 ![png](distributions_resources/output_47_1.png)
+    
+
+
 
 ```python
 sns.relplot(data=penguins, x="bill_length_mm", y="bill_depth_mm")
 sns.rugplot(data=penguins, x="bill_length_mm", y="bill_depth_mm")
 ```
 
+
+
+
     <Axes: xlabel='bill_length_mm', ylabel='bill_depth_mm'>
 
+
+
+
+    
 ![png](distributions_resources/output_48_1.png)
+    
+
 
 ### Plotting many distributions
 
@@ -642,13 +873,24 @@ sns.rugplot(data=penguins, x="bill_length_mm", y="bill_depth_mm")
 
 简单来说，`pairplot()` 是一个可视化工具，它能够展示一个数据集中所有变量的分布情况和它们之间的相互关系，通过创建一系列的小图来实现这一点。这种方法有助于快速理解数据的多维度特征和变量间的相互作用。
 
+
 ```python
 sns.pairplot(penguins)
 ```
 
+
+
+
     <seaborn.axisgrid.PairGrid at 0x148b9b1a0>
 
+
+
+
+    
 ![png](distributions_resources/output_50_1.png)
+    
+
+
 
 ```python
 g = sns.PairGrid(penguins)
@@ -657,6 +899,15 @@ g.map_lower(sns.kdeplot, fill=True)
 g.map_diag(sns.histplot, kde=True)
 ```
 
+
+
+
     <seaborn.axisgrid.PairGrid at 0x14904e0f0>
 
+
+
+
+    
 ![png](distributions_resources/output_51_1.png)
+    
+

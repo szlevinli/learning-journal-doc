@@ -499,3 +499,51 @@ class Solution:
 
         return True
 ```
+
+## 102. Binary Tree Level Order Traversal
+
+这道题是二叉树的层序遍历, 增加的一个难度是按层返回二维数组.
+
+!!! Tip
+
+    ### 思路解释：
+
+    1. **使用队列进行层序遍历**：通过广度优先搜索（BFS）的方式遍历二叉树，从根节点开始，逐层访问每一层的节点。队列用来存储当前层的所有节点。
+    2. **逐层处理节点**：在每次迭代中，处理队列中所有属于同一层的节点，并将这些节点的值收集到一个列表中。
+    3. **记录当前层结果**：一旦处理完当前层的所有节点，将其结果列表添加到最终的结果集中，准备处理下一层。
+    4. **推进到下一层**：将当前层的所有节点的子节点（即下一层的节点）加入队列，继续下一次迭代。
+    5. **结束条件**：当队列为空时，表示所有层次的节点都已经处理完毕，遍历完成，返回最终的结果。
+
+    ### 关键点：
+
+    - **队列的作用**：确保按照层次顺序逐层遍历。
+    - **分层处理**：在每一层中，先收集节点的值，然后再将下一层的节点加入队列。
+    - **最终结果**：将每一层的节点值列表依次加入到最终的结果中，实现层序遍历。
+
+```python
+def level_order(root: TreeNode | None) -> list[list[int]]:
+    if root is None:
+        return []
+
+    from collections import deque
+
+    queue = deque()
+    res = []
+
+    queue.append(root)
+
+    while queue:
+        level = []
+        size = len(queue)
+
+        for _ in range(size):
+            node = queue.popleft()
+            level.append(node.val)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+        res.append(level)
+
+    return res
+```

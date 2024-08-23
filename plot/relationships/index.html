@@ -1,0 +1,1614 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../distributions/">
+      
+      
+        <link rel="next" href="../statistical_estimation_and_error_bars/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.32">
+    
+    
+      
+        <title>可视化统计关系 - Visualizing statistical relationships - Learning Journal</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#-visualizing-statistical-relationships" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Learning Journal" class="md-header__button md-logo" aria-label="Learning Journal" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning Journal
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              可视化统计关系 - Visualizing statistical relationships
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Learning Journal" class="md-nav__button md-logo" aria-label="Learning Journal" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Learning Journal
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    学习笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Algorithm
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Algorithm
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    算法学习计划
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithm/02.complexity_analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    复杂度分析 - Complexity Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithm/03.data_structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数据结构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithm/07.tree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    树
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Algorithm/leetcode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LeetCode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Mathematics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Mathematics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    常用公式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Statistics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Statistics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Statistics/concept/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    统计学常用概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Statistics/confidence_interval/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    置信区间 - Confidence Interval
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Statistics/kernel_density_estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    核密度估计 - Kernel Density Estimation, KDE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Statistics/probability_distributions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    概率分布
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Plot
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Plot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../box_plot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    箱线图 - Box Plot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../categorical/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Visualizing categorical data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distributions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Visualizing distributions of Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    可视化统计关系 - Visualizing statistical relationships
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    可视化统计关系 - Visualizing statistical relationships
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#-scatter-plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      散点图 - Scatter Plot
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="散点图 - Scatter Plot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      都是数值类型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      通过折线图强调连续性
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="通过折线图强调连续性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      聚合和表示不确定性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-standard-deviation-sd" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 标准差 (Standard Deviation, sd)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-confidence-interval-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 置信区间 (Confidence Interval, ci)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-standard-error-se" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 标准误差 (Standard Error, se)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-prediction-interval-pi" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 预测区间 (Prediction Interval, pi)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      比较总结
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-mean" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. mean (均值)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-median" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. median (中位数)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sum" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. sum (总和)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. min (最小值)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-max" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. max (最大值)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-std" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. std (标准差)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-var" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. var (方差)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-count" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. count (计数)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-none" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. None
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      自定义函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estimator" class="md-nav__link">
+    <span class="md-ellipsis">
+      选择 estimator 的原则
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用语义映射绘制数据子集
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      控制排序和方向
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-showing-multiple-relationships-with-facets" class="md-nav__link">
+    <span class="md-ellipsis">
+      通过分面展示多个关系 - Showing multiple relationships with Facets
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../statistical_estimation_and_error_bars/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Statistical estimation and error bars
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#-scatter-plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      散点图 - Scatter Plot
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="散点图 - Scatter Plot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      都是数值类型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      通过折线图强调连续性
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="通过折线图强调连续性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      聚合和表示不确定性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-standard-deviation-sd" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 标准差 (Standard Deviation, sd)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-confidence-interval-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 置信区间 (Confidence Interval, ci)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-standard-error-se" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 标准误差 (Standard Error, se)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-prediction-interval-pi" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 预测区间 (Prediction Interval, pi)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      比较总结
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-mean" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. mean (均值)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-median" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. median (中位数)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sum" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. sum (总和)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-min" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. min (最小值)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-max" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. max (最大值)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-std" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. std (标准差)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-var" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. var (方差)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-count" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. count (计数)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-none" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. None
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      自定义函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estimator" class="md-nav__link">
+    <span class="md-ellipsis">
+      选择 estimator 的原则
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用语义映射绘制数据子集
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      控制排序和方向
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#-showing-multiple-relationships-with-facets" class="md-nav__link">
+    <span class="md-ellipsis">
+      通过分面展示多个关系 - Showing multiple relationships with Facets
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="-visualizing-statistical-relationships">可视化统计关系 - Visualizing statistical relationships</h1>
+<ul>
+<li><code>scatterplot()</code> (with <code>kind="scatter</code>; the default)</li>
+<li><code>lineplot</code> (with <code>kind="line"</code>)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;darkgrid&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="-scatter-plot">散点图 - Scatter Plot</h2>
+<h3 id="_1">都是数值类型</h3>
+<p><strong>hue 语义属性</strong></p>
+<ul>
+<li>对于分类数据, hue 语义默认采用 "定性调色板" (qualitative palette)</li>
+<li>对于数值数据, hue 语义默认采用 "顺序调色板" (sequential palette)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../../data/tips.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># qualitative palette</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;smoker&quot;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x146fa74a0&gt;
+</code></pre>
+<p><img alt="png" src="../relationships_resources/output_4_1.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># sequential palette</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;size&quot;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x146f70740&gt;
+</code></pre>
+<p><img alt="png" src="../relationships_resources/output_5_1.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># customize palette</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;ch:r=-.5,l=.75&quot;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x1470053a0&gt;
+</code></pre>
+<p><img alt="png" src="../relationships_resources/output_6_1.png" /></p>
+<p>自定义调色板具体解释如下：</p>
+<ul>
+<li>
+<p>"ch"：表示使用CUBEHELIX颜色系统（cubehelix color system）。这是一个在色相、亮度和色度之间平衡的颜色系统，常用于数据可视化，因为它在黑白打印时也能保持良好的区分度。</p>
+</li>
+<li>
+<p>"r=-.5"：调整颜色轮的旋转（rotation）。r 参数表示颜色轮旋转的角度。-.5 表示逆时针旋转0.5圈（180度）。正值会顺时针旋转，负值会逆时针旋转。旋转角度影响调色板的色相（hue）。</p>
+</li>
+<li>
+<p>"l=.75"：调整亮度（lightness）。l 参数表示亮度的起始值。.75 表示调色板中的颜色将从75%的亮度开始。这意味着颜色会比较亮。亮度范围通常在0（最暗）到1（最亮）之间。</p>
+</li>
+</ul>
+<p>总的来说，"ch:r=-.5,l=.75" 定义了一个从75%亮度开始，颜色逆时针旋转180度的CUBEHELIX调色板。这种调色板设计用于在视觉上区分不同数据点的类别（由 hue 参数指定），并确保在各种展示环境下（包括黑白打印）保持良好的可辨性。</p>
+<h2 id="_2">通过折线图强调连续性</h2>
+<p>散点图非常有效，但没有普遍适用的最佳可视化类型。相反，视觉表示应根据数据集的具体情况以及你试图通过图表回答的问题进行调整。</p>
+<p>对于某些数据集，你可能想要了解一个变量随时间或其他类似连续变量的变化。在这种情况下，绘制折线图是一个不错的选择。在 Seaborn 中，可以通过 <code>lineplot()</code> 函数直接实现，也可以通过设置 <code>kind="line"</code> 使用 <code>relplot()</code> 来完成。</p>
+<div class="highlight"><pre><span></span><code><span class="n">dowjones_ori</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../../data/dowjones.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">dowjones</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">dowjones_ori</span><span class="o">.</span><span class="n">convert_dtypes</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">astype</span><span class="p">({</span><span class="s2">&quot;Date&quot;</span><span class="p">:</span> <span class="s2">&quot;datetime64[ms]&quot;</span><span class="p">})</span>
+    <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Year</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dowjones</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Price&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x1471d91f0&gt;
+</code></pre>
+<p><img alt="png" src="../relationships_resources/output_11_1.png" /></p>
+<h3 id="_3">聚合和表示不确定性</h3>
+<p>更复杂的数据集将在 x 变量的同一值下具有多个测量值。Seaborn 的默认行为是通过绘制均值及其周围的 95% 置信区间来聚合每个 x 值的多个测量值：</p>
+<div class="highlight"><pre><span></span><code><span class="n">fmri</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../../data/fmri.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;timepoint&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x147279220&gt;
+</code></pre>
+<p><img alt="png" src="../relationships_resources/output_14_1.png" /></p>
+<p>如果不希望显示置信区间, 可以设置 <code>errorbar=None</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;timepoint&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span> <span class="n">errorbar</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x1472dae70&gt;
+</code></pre>
+<p><img alt="png" src="../relationships_resources/output_16_1.png" /></p>
+<p>另一个不错的选择，尤其是在处理较大数据时，是通过绘制标准差而不是置信区间来表示每个时间点的分布范围。</p>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;timepoint&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span>
+    <span class="n">errorbar</span><span class="o">=</span><span class="s2">&quot;sd&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x14725aea0&gt;
+</code></pre>
+<p><img alt="png" src="../relationships_resources/output_18_1.png" /></p>
+<p>在 Seaborn 中，<code>errorbar</code> 参数用于控制误差棒的显示方式。除了 <code>"sd"</code>（表示标准差）以外，还有以下几种常见的选项：</p>
+<ol>
+<li>
+<p><strong>"ci"</strong>: 置信区间（Confidence Interval）。这是 Seaborn 的默认选项，通常使用 95% 的置信区间。</p>
+</li>
+<li>
+<p><strong>"se"</strong>: 标准误差（Standard Error）。表示均值的标准误差。</p>
+</li>
+<li>
+<p><strong>"pi"</strong>: 预测区间（Prediction Interval）。这是一个更广泛的区间，用于包含未来观测值的范围。</p>
+</li>
+<li>
+<p><strong>数字</strong>（例如 <code>68</code>, <code>95</code>）：可以指定一个自定义的置信区间的百分比。例如，<code>errorbar=68</code> 表示绘制 68% 的置信区间。</p>
+</li>
+<li>
+<p><strong><code>None</code></strong>: 如果你不想显示任何误差棒，可以将 <code>errorbar</code> 设置为 <code>None</code>。</p>
+</li>
+</ol>
+<p>这些选项允许你根据数据的特性和分析需求，自定义误差棒的显示方式，以更好地表示不确定性或数据的分布情况。</p>
+<p>在数据可视化中，<code>errorbar</code> 参数用于表示数据的不确定性或变异性。<code>sd</code>、<code>ci</code>、<code>se</code> 和 <code>pi</code> 都是不同的统计指标，用于不同的目的，具体解释如下：</p>
+<h3 id="1-standard-deviation-sd">1. <strong>标准差 (Standard Deviation, <code>sd</code>)</strong></h3>
+<ul>
+<li><strong>含义</strong>: 标准差是衡量数据分布的离散程度的一种统计量。它表示数据点与均值之间的平均距离。标准差越大，数据的离散程度越高。</li>
+<li><strong>表示</strong>: 在误差棒中，使用标准差意味着你展示的是数据在该点周围的分布范围，反映了数据的离散性，但不涉及置信度。</li>
+<li><strong>适用场景</strong>: 通常用于说明数据的自然变异性或噪声水平，而不是推断统计结论。</li>
+</ul>
+<h3 id="2-confidence-interval-ci">2. <strong>置信区间 (Confidence Interval, <code>ci</code>)</strong></h3>
+<ul>
+<li><strong>含义</strong>: 置信区间表示估计值所在范围内的可信程度，通常是指包含总体参数（如均值）的范围。95% 置信区间表示有 95% 的可能性，真实均值在该区间内。</li>
+<li><strong>表示</strong>: 在误差棒中，置信区间通常表示均值周围的范围，显示的是均值的不确定性，而不是个别数据点的变异性。</li>
+<li><strong>适用场景</strong>: 置信区间广泛用于推断统计结论，如比较不同组之间的差异时，展示均值的不确定性。</li>
+</ul>
+<h3 id="3-standard-error-se">3. <strong>标准误差 (Standard Error, <code>se</code>)</strong></h3>
+<ul>
+<li><strong>含义</strong>: 标准误差是均值的标准偏差，反映样本均值相对于总体均值的变异性。它衡量的是均值的准确性，而不是单个数据点的离散性。</li>
+<li><strong>表示</strong>: 在误差棒中，使用标准误差可以展示均值的不确定性，比标准差更适合于描述均值的精确度。</li>
+<li><strong>适用场景</strong>: 适用于需要展示样本均值相对于总体均值的可靠性时，如在样本量较大时，用标准误差会比标准差更能反映均值的精度。</li>
+</ul>
+<h3 id="4-prediction-interval-pi">4. <strong>预测区间 (Prediction Interval, <code>pi</code>)</strong></h3>
+<ul>
+<li><strong>含义</strong>: 预测区间表示未来单个观测值的可能范围，而不是均值的范围。它通常比置信区间宽，因为它需要考虑数据的总体变异性和未来观测的不确定性。</li>
+<li><strong>表示</strong>: 在误差棒中，预测区间反映的是未来某个具体值可能出现的范围，适用于预测和模型验证。</li>
+<li><strong>适用场景</strong>: 适用于时间序列预测或其他需要预测未来观测值的情境，通常用于模型的外推或验证。</li>
+</ul>
+<h3 id="_4">比较总结</h3>
+<ul>
+<li><strong>标准差 (<code>sd</code>)</strong>: 描述数据的离散性，适合用于展示数据的自然变异。</li>
+<li><strong>置信区间 (<code>ci</code>)</strong>: 描述均值的可靠性，适合用于推断统计结论。</li>
+<li><strong>标准误差 (<code>se</code>)</strong>: 描述样本均值的准确性，适合用于展示均值的精度。</li>
+<li><strong>预测区间 (<code>pi</code>)</strong>: 描述未来观测值的范围，适合用于预测和模型验证。</li>
+</ul>
+<p>通过这些不同的误差棒选项，你可以根据数据分析的具体需求，选择最合适的统计指标来展示数据的不确定性和变异性。</p>
+<p>通过设置 <code>estimator</code> 为 <code>None</code> 可以关闭聚合计算.</p>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;timepoint&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span>
+    <span class="n">estimator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x1471d8740&gt;
+</code></pre>
+<p><img alt="png" src="../relationships_resources/output_21_1.png" /></p>
+<p>在 Seaborn 中，<code>estimator</code> 参数用于指定如何对数据进行聚合或计算，以便在图表中显示汇总值。这个参数通常与 <code>errorbar</code> 配合使用，用来定义显示误差棒时应如何计算中心趋势或分布范围。以下是一些常见的 <code>estimator</code> 及其含义：</p>
+<h3 id="1-mean">1. <strong><code>mean</code> (均值)</strong></h3>
+<ul>
+<li><strong>含义</strong>: 计算数据的平均值，是数据中心趋势的常用指标。</li>
+<li><strong>适用场景</strong>: 当你希望展示总体数据的中心趋势时，使用均值是最常见的选择。默认情况下，Seaborn 的 <code>estimator</code> 就是 <code>mean</code>。</li>
+</ul>
+<h3 id="2-median">2. <strong><code>median</code> (中位数)</strong></h3>
+<ul>
+<li><strong>含义</strong>: 数据的中位数，即将数据按大小排序后处于中间位置的值。</li>
+<li><strong>适用场景</strong>: 当数据存在异常值或分布偏斜时，中位数比均值更能代表数据的中心趋势。</li>
+</ul>
+<h3 id="3-sum">3. <strong><code>sum</code> (总和)</strong></h3>
+<ul>
+<li><strong>含义</strong>: 计算数据的总和。</li>
+<li><strong>适用场景</strong>: 适用于需要展示总体数据的总量或累积值的情况。</li>
+</ul>
+<h3 id="4-min">4. <strong><code>min</code> (最小值)</strong></h3>
+<ul>
+<li><strong>含义</strong>: 计算数据中的最小值。</li>
+<li><strong>适用场景</strong>: 当你需要展示数据的最低界限或最低点时，可以使用最小值作为 <code>estimator</code>。</li>
+</ul>
+<h3 id="5-max">5. <strong><code>max</code> (最大值)</strong></h3>
+<ul>
+<li><strong>含义</strong>: 计算数据中的最大值。</li>
+<li><strong>适用场景</strong>: 当你需要展示数据的最高界限或最高点时，可以使用最大值作为 <code>estimator</code>。</li>
+</ul>
+<h3 id="6-std">6. <strong><code>std</code> (标准差)</strong></h3>
+<ul>
+<li><strong>含义</strong>: 计算数据的标准差，表示数据的离散程度。</li>
+<li><strong>适用场景</strong>: 适用于展示数据的变异性或离散程度，特别是在分析数据分布时。</li>
+</ul>
+<h3 id="7-var">7. <strong><code>var</code> (方差)</strong></h3>
+<ul>
+<li><strong>含义</strong>: 计算数据的方差，表示数据的离散程度。</li>
+<li><strong>适用场景</strong>: 与标准差类似，但它表示的是离散程度的平方。</li>
+</ul>
+<h3 id="8-count">8. <strong><code>count</code> (计数)</strong></h3>
+<ul>
+<li><strong>含义</strong>: 计算数据点的数量。</li>
+<li><strong>适用场景</strong>: 当你需要展示某个类别或组的频率时，计数是一个有用的指标。</li>
+</ul>
+<h3 id="9-none">9. <strong><code>None</code></strong></h3>
+<ul>
+<li><strong>含义</strong>: 不进行任何聚合，直接绘制数据点。</li>
+<li><strong>适用场景</strong>: 当你希望展示原始数据的所有点而不进行任何聚合时，可以将 <code>estimator</code> 设置为 <code>None</code>。</li>
+</ul>
+<h3 id="_5">自定义函数</h3>
+<p>你还可以传入自定义函数作为 <code>estimator</code>。这个函数将应用于每个 x 变量的分组数据，返回一个聚合结果。</p>
+<h3 id="estimator">选择 <code>estimator</code> 的原则</h3>
+<ul>
+<li><strong>均值 (<code>mean</code>) 和中位数 (<code>median</code>)</strong>: 常用于描述数据的中心趋势。</li>
+<li><strong>总和 (<code>sum</code>) 和计数 (<code>count</code>)</strong>: 用于累积或频率分析。</li>
+<li><strong>最小值 (<code>min</code>) 和最大值 (<code>max</code>)</strong>: 用于展示数据范围。</li>
+<li><strong>标准差 (<code>std</code>) 和方差 (<code>var</code>)</strong>: 用于分析数据的离散性。</li>
+</ul>
+<p>通过选择适当的 <code>estimator</code>，你可以更好地聚合和展示数据，突出数据的某些特性或趋势。</p>
+<h3 id="_6">使用语义映射绘制数据子集</h3>
+<p><code>lineplot()</code> 函数具有与 <code>scatterplot()</code> 相同的灵活性：它可以通过修改图形元素的色调（<code>hue</code>）、大小（<code>size</code>）和样式（<code>style</code>）来显示多达三个附加变量。它使用与 <code>scatterplot()</code> 相同的 API，这意味着我们不需要特意区分 Matplotlib 中控制线条和点的参数。</p>
+<p>在 <code>lineplot()</code> 中使用语义（semantics）还会决定数据的聚合方式。例如，添加一个具有两个级别的 <code>hue</code> 语义会将图形分成两条线和误差带，并使用不同的颜色来表示它们对应的数据子集。</p>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;timepoint&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;event&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x145a074a0&gt;
+</code></pre>
+<p><img alt="png" src="../relationships_resources/output_24_1.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;timepoint&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;region&quot;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="s2">&quot;event&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x14743bb30&gt;
+</code></pre>
+<p><img alt="png" src="../relationships_resources/output_25_1.png" /></p>
+<p>但是，你可以通过在每个观测点使用的标记（marker）来识别数据子集，这些标记可以与虚线一起使用，或者替代虚线。</p>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;timepoint&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;region&quot;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="s2">&quot;event&quot;</span><span class="p">,</span>
+    <span class="n">dashes</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">markers</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x14727bb30&gt;
+</code></pre>
+<p><img alt="png" src="../relationships_resources/output_27_1.png" /></p>
+<p>与散点图一样，在使用多个语义进行折线图时需要谨慎。虽然有时这些图表能够提供有用的信息，但它们也可能难以解析和理解。不过，即使你只是检查一个额外变量的变化，改变线条的颜色和样式也可能会有帮助。这可以使图表在打印成黑白或由色盲的人观看时更易于理解。</p>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;timepoint&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;event&quot;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="s2">&quot;event&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x14747eff0&gt;
+</code></pre>
+<p><img alt="png" src="../relationships_resources/output_29_1.png" /></p>
+<p><code>units</code> 参数用于指定在数据集中表示“重复测量单位”的变量。也就是说，当你有一个数据集，其中同一个观测对象被多次采样时（例如，一个人在多个时间点上被测量），<code>units</code> 参数帮助绘图函数识别这些观测对象，并对它们进行分别绘制，而不使用颜色、样式等语义来区分它们。</p>
+<p>通过使用 <code>units</code> 参数，可以避免在图例（legend）中生成多余的条目，因为每个测量单位的曲线会被单独绘制，但不会因不同的颜色或样式而引入新的图例项。这有助于保持图表的清晰和简洁，特别是在处理大量重复测量数据时。</p>
+<p>总结来说，<code>units</code> 参数的作用是告诉绘图函数哪些数据点属于同一个测量单位，并允许这些数据点在图中以一致的方式显示，而不影响图例的简洁性。</p>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;event == &#39;stim&#39;&quot;</span><span class="p">),</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;timepoint&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;region&quot;</span><span class="p">,</span>
+    <span class="n">units</span><span class="o">=</span><span class="s2">&quot;subject&quot;</span><span class="p">,</span>
+    <span class="n">estimator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x1474d8740&gt;
+</code></pre>
+<p><img alt="png" src="../relationships_resources/output_31_1.png" /></p>
+<h3 id="_7">控制排序和方向</h3>
+<div class="highlight"><pre><span></span><code><span class="n">healthexp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../../data/healthexp.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">healthexp</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">),</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Spending_USD&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Life_Expectancy&quot;</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Country&quot;</span><span class="p">,</span>
+    <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x14787b5f0&gt;
+</code></pre>
+<p><img alt="png" src="../relationships_resources/output_34_1.png" /></p>
+<p>上面的代码看不出来 <code>sort</code> 的作用, 下面的例子可以清晰的说明这个参数的用途.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># 创建一个小的数据集，其中 x 轴数据不是按顺序排列的</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">]})</span>
+
+<span class="c1"># 创建一个图形，并将其分为一行两列</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># 使用默认的 sort=True</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;With Default sort=True&quot;</span><span class="p">)</span>
+
+<span class="c1"># 使用 sort=False</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;With sort=False&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../relationships_resources/output_36_0.png" /></p>
+<h2 id="-showing-multiple-relationships-with-facets">通过分面展示多个关系 - Showing multiple relationships with Facets</h2>
+<p>我们在本教程中强调过，虽然这些函数可以同时显示多个语义变量，但这样做并不总是有效。那么，当你确实想要了解两个变量之间的关系如何依赖于多个其他变量时，该怎么办呢？</p>
+<p>最好的方法可能是制作多个图表。由于 <code>relplot()</code> 基于 <code>FacetGrid</code>，这很容易实现。为了展示附加变量的影响，可以将其用于“分面”可视化，而不是将其分配给图中的某个语义角色。这意味着你可以创建多个坐标轴，并在每个坐标轴上绘制数据的子集：</p>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">tips</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;tip&quot;</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span>
+    <span class="n">col</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x147a40110&gt;
+</code></pre>
+<p><img alt="png" src="../relationships_resources/output_38_1.png" /></p>
+<p>你还可以通过这种方式展示两个变量的影响：一个通过在列上分面，另一个通过在行上分面。当你开始向网格中添加更多变量时，可能需要减小图形的尺寸。请记住，<code>FacetGrid</code> 的大小是由每个分面的高度和纵横比参数化的。</p>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="p">,</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;timepoint&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;subject&quot;</span><span class="p">,</span>
+    <span class="n">col</span><span class="o">=</span><span class="s2">&quot;region&quot;</span><span class="p">,</span>
+    <span class="n">row</span><span class="o">=</span><span class="s2">&quot;event&quot;</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">estimator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x147962f90&gt;
+</code></pre>
+<p><img alt="png" src="../relationships_resources/output_40_1.png" /></p>
+<p>当你想要检查一个变量的多个层级的影响时，将该变量在列上分面，然后将这些分面“包裹”到行中，是一个不错的选择。</p>
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">fmri</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;region == &#39;frontal&#39;&quot;</span><span class="p">),</span>
+    <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;timepoint&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;signal&quot;</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;event&quot;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="s2">&quot;event&quot;</span><span class="p">,</span>
+    <span class="n">col</span><span class="o">=</span><span class="s2">&quot;subject&quot;</span><span class="p">,</span>
+    <span class="n">col_wrap</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">aspect</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x147686b70&gt;
+</code></pre>
+<p><img alt="png" src="../relationships_resources/output_42_1.png" /></p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.471ce7a9.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>

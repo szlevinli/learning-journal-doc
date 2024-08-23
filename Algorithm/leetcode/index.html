@@ -1,0 +1,1606 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../07.tree/">
+      
+      
+        <link rel="next" href="../../Mathematics/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.32">
+    
+    
+      
+        <title>LeetCode - Learning Journal</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#leetcode" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Learning Journal" class="md-header__button md-logo" aria-label="Learning Journal" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning Journal
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              LeetCode
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Learning Journal" class="md-nav__button md-logo" aria-label="Learning Journal" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Learning Journal
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    学习笔记
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Algorithm
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Algorithm
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    算法学习计划
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02.complexity_analysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    复杂度分析 - Complexity Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03.data_structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数据结构
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07.tree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    树
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    LeetCode
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    LeetCode
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-two-sum" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Two Sum
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-remove-duplicates-from-sorted-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      26. Remove Duplicates from Sorted Array
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#141-linked-list-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      141. Linked List Cycle
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#206-reverse-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      206. Reverse Linked List
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21-merge-two-sorted-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      21. Merge Two Sorted Lists
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#234-palindrome-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      234. Palindrome Linked List
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-valid-parentheses" class="md-nav__link">
+    <span class="md-ellipsis">
+      20. Valid Parentheses
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#155-min-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      155. Min Stack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#232-implement-queue-using-stacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      232. Implement Queue using Stacks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#225-implement-stack-using-queues" class="md-nav__link">
+    <span class="md-ellipsis">
+      225. Implement Stack using Queues
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#349-intersection-of-two-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      349. Intersection of Two Arrays
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#350-intersection-of-two-arrays-ii" class="md-nav__link">
+    <span class="md-ellipsis">
+      350. Intersection of Two Arrays II
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36-valid-sudoku" class="md-nav__link">
+    <span class="md-ellipsis">
+      36. Valid Sudoku
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#102-binary-tree-level-order-traversal" class="md-nav__link">
+    <span class="md-ellipsis">
+      102. Binary Tree Level Order Traversal
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="102. Binary Tree Level Order Traversal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      思路解释：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      关键点：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Mathematics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Mathematics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mathematics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    常用公式
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Statistics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Statistics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Statistics/concept/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    统计学常用概念
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Statistics/confidence_interval/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    置信区间 - Confidence Interval
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Statistics/kernel_density_estimation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    核密度估计 - Kernel Density Estimation, KDE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Statistics/probability_distributions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    概率分布
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Plot
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Plot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plot/box_plot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    箱线图 - Box Plot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plot/categorical/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Visualizing categorical data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plot/distributions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Visualizing distributions of Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plot/relationships/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    可视化统计关系 - Visualizing statistical relationships
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plot/statistical_estimation_and_error_bars/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Statistical estimation and error bars
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-two-sum" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Two Sum
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-remove-duplicates-from-sorted-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      26. Remove Duplicates from Sorted Array
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#141-linked-list-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      141. Linked List Cycle
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#206-reverse-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      206. Reverse Linked List
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21-merge-two-sorted-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      21. Merge Two Sorted Lists
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#234-palindrome-linked-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      234. Palindrome Linked List
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#20-valid-parentheses" class="md-nav__link">
+    <span class="md-ellipsis">
+      20. Valid Parentheses
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#155-min-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      155. Min Stack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#232-implement-queue-using-stacks" class="md-nav__link">
+    <span class="md-ellipsis">
+      232. Implement Queue using Stacks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#225-implement-stack-using-queues" class="md-nav__link">
+    <span class="md-ellipsis">
+      225. Implement Stack using Queues
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#349-intersection-of-two-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      349. Intersection of Two Arrays
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#350-intersection-of-two-arrays-ii" class="md-nav__link">
+    <span class="md-ellipsis">
+      350. Intersection of Two Arrays II
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36-valid-sudoku" class="md-nav__link">
+    <span class="md-ellipsis">
+      36. Valid Sudoku
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#102-binary-tree-level-order-traversal" class="md-nav__link">
+    <span class="md-ellipsis">
+      102. Binary Tree Level Order Traversal
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="102. Binary Tree Level Order Traversal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      思路解释：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      关键点：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="leetcode">LeetCode</h1>
+<h2 id="1-two-sum">1. Two Sum</h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>哈希</p>
+</div>
+<p>从 <span class="arithmatex">\(O(n^2)\)</span> 优化到 <span class="arithmatex">\(O(n)\)</span></p>
+<p>利用 Hash Map 的插入, 检索的时间复杂度 <span class="arithmatex">\(O(1)\)</span> 以及数学中的 Complement 来优化算法.</p>
+<ol>
+<li>创建 Hash Map 存放 <code>{value: index}</code></li>
+<li>计算 <code>complement = target - value</code></li>
+<li>如果 <code>complement</code> 存在于 Hash Table 中, 则返回 <code>[hash_map[complement], i]</code></li>
+</ol>
+<p>上面的算法可以实现仅对输入的数组进行一次迭代即可完成.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">twoSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="c1"># 创建哈希表</span>
+        <span class="n">hash_map</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># 迭代数组</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+            <span class="c1"># 计算差值. 也叫 &quot;补数&quot;</span>
+            <span class="n">complement</span> <span class="o">=</span> <span class="n">target</span> <span class="o">-</span> <span class="n">v</span>
+            <span class="c1"># 补数存在于哈希表中, 表示找到了结果</span>
+            <span class="k">if</span> <span class="n">complement</span> <span class="ow">in</span> <span class="n">hash_map</span><span class="p">:</span>
+                <span class="c1"># 返回结果</span>
+                <span class="k">return</span> <span class="p">[</span><span class="n">hash_map</span><span class="p">[</span><span class="n">complement</span><span class="p">],</span> <span class="n">i</span><span class="p">]</span>
+            <span class="c1"># 补数不存在于哈希表, 则创建</span>
+            <span class="n">hash_map</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+</code></pre></div>
+<h2 id="26-remove-duplicates-from-sorted-array">26. Remove Duplicates from Sorted Array</h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>双指针</p>
+</div>
+<p>首先需要理解 <strong>non-decreasing order</strong> 的含义, 这是一个数学和计算机科学的专业术语, <strong>非严格递增排序</strong> 指的是数据从小到大排序且允许重复值的出现, 例如: <code>[0, 0, 1, 2, 2, 3]</code>.</p>
+<p>双指针, 一个 slow point, 一个 fast point, fast pint 用于迭代数组元素, slow point 用于跟踪需要覆盖的数组索引.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">removeDuplicates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="c1"># 慢指针</span>
+        <span class="n">slow</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># 迭代</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
+            <span class="c1"># 当前值不等于前一个值</span>
+            <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]:</span>
+                <span class="c1"># 慢指针向前移动 1 个位置</span>
+                <span class="n">slow</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="c1"># 当前值写入慢指针位置</span>
+                <span class="n">nums</span><span class="p">[</span><span class="n">slow</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+        <span class="c1"># 返回慢指针位置 +1</span>
+        <span class="c1"># +1 表示移动了几次, 因为慢指针从 0 开始, 也就是有多少个重复值</span>
+        <span class="k">return</span> <span class="n">slow</span> <span class="o">+</span> <span class="mi">1</span>
+</code></pre></div>
+<h2 id="141-linked-list-cycle">141. Linked List Cycle</h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>双指针. 慢指针(一次一步), 快指针(一次两步).</p>
+</div>
+<p>最直观的想法就是沿着链表迭代每个节点, 然后将节点值放入 <code>Set</code> 中, 利用其哈希特性实现 <span class="arithmatex">\(O(1)\)</span> 的查找效率, 从而使得整个事件复杂度变为 <span class="arithmatex">\(O(1)\)</span>. 但是, 此种方法会导致空间复杂度为 <span class="arithmatex">\(O(n)\)</span>, 因此这并不是一个好的解决方案.</p>
+<p>通常此类问题属于链表环检测, 在数学中这属于 <strong>同余原理</strong> 的问题, 简单来说, 在一个环中走的快的一定会在走的慢的的一个周期内相遇. 比如: 钟表, 时针一定会在12小时(一圈)内与分钟相遇一次. 因此这道题就采用双指针来进行解答.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ListNode</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">next</span><span class="p">:</span> <span class="n">ListNode</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">hasCycle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">:</span> <span class="n">ListNode</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">head</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+        <span class="c1"># 初始化慢指针, 指向链表头</span>
+        <span class="n">slow</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="c1"># 初始化快指针, 指向链表头</span>
+        <span class="n">fast</span> <span class="o">=</span> <span class="n">head</span>
+
+        <span class="c1"># 迭代链表, 因为快指针快, 所以使用快指针作为判断依据</span>
+        <span class="k">while</span> <span class="n">fast</span> <span class="ow">and</span> <span class="n">fast</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+            <span class="c1"># 慢指针走一步</span>
+            <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="o">.</span><span class="n">next</span>
+            <span class="c1"># 快指针走两步</span>
+            <span class="n">fast</span> <span class="o">=</span> <span class="n">fast</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span>
+            <span class="c1"># 快指针等于慢指针</span>
+            <span class="k">if</span> <span class="n">slow</span> <span class="o">==</span> <span class="n">fast</span><span class="p">:</span>
+                <span class="c1"># 表示有环出现, 返回</span>
+                <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="c1"># 遍历链表发现快指针或快指针的 next 指针为空, 表示没有环出现</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</code></pre></div>
+<h2 id="206-reverse-linked-list">206. Reverse Linked List</h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>双指针. 一个指向上前驱节点, 一个指向当前节点</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ListNode</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">next</span><span class="p">:</span> <span class="n">ListNode</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">reverseList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">:</span> <span class="n">ListNode</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ListNode</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># 边界检查</span>
+        <span class="k">if</span> <span class="n">head</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">head</span><span class="o">.</span><span class="n">next</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">head</span>
+
+        <span class="c1"># 初始化. 前驱节点指针</span>
+        <span class="n">prev</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># 初始化. 当前节点指针</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="n">head</span>
+
+        <span class="c1"># 遍历链表</span>
+        <span class="k">while</span> <span class="n">current</span><span class="p">:</span>
+            <span class="c1"># 存储. 后驱节点指针</span>
+            <span class="n">next_node</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">next</span>
+            <span class="c1"># 反转当前节点</span>
+            <span class="n">current</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">prev</span>
+            <span class="c1"># 移动前驱节点指针到当前节点</span>
+            <span class="n">prev</span> <span class="o">=</span> <span class="n">current</span>
+            <span class="c1"># 移动当前节点指针到后驱节点</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">next_node</span>
+
+        <span class="c1"># 返回</span>
+        <span class="k">return</span> <span class="n">prev</span>
+</code></pre></div>
+<h2 id="21-merge-two-sorted-lists">21. Merge Two Sorted Lists</h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>双指针合并算法 (Two-Pointer Merge Algorithm).</p>
+<p>使用虚拟节点</p>
+</div>
+<div class="admonition quote 一开始的思路">
+<p class="admonition-title">Quote</p>
+<ul>
+<li>处理边界.<ul>
+<li>list1 or list2 is None</li>
+<li>list1.next or list2.next is None</li>
+</ul>
+</li>
+<li>初始化两个指针分别指向两个链表的头部. p1, p2</li>
+<li>遍历 list1<ul>
+<li>p2 is None, 表示 list2 已到底, 将 list1 append 到 list2 之后, 终止遍历 返回 list2</li>
+<li>p1.val &gt;= p2.val, 删除 list1 当前节点并将该节点插入 list2 当前节点之后</li>
+<li>p1.val &lt; p2.val, 删除 list1 当前节点并将该节点插入 list2 当前节点之前</li>
+</ul>
+</li>
+<li>返回 list2</li>
+</ul>
+</div>
+<p><strong>上面的思路有问题, 重新梳理后的</strong></p>
+<ul>
+<li>初始化<ul>
+<li>创建一个虚拟节点 dummy</li>
+<li>创建一个 current 指针指向 dummy</li>
+</ul>
+</li>
+<li>合并链表<ul>
+<li>使用 <code>while</code> 循环遍历两个链表, 直到其中一个到达尾部</li>
+<li>比较两个链表当前节点值, 将较小值的节点接到 current 之后, 并将相应链表的指针前进一位</li>
+<li>将 current 指针移动到新添加的节点</li>
+</ul>
+</li>
+<li>处理剩余节点<ul>
+<li>循环结束后, 如果还有未处理的节点, 直接将这些节点接到 current 之后</li>
+</ul>
+</li>
+<li>返回合并后的链表:<ul>
+<li>返回 <code>dummy.next</code>, 因为 <code>dummy</code> 是一个虚拟头节点.</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ListNode</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">next</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">next</span><span class="p">:</span> <span class="n">ListNode</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="nb">next</span>
+
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">mergeTwoList</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">list1</span><span class="p">:</span> <span class="n">ListNode</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">list2</span><span class="p">:</span> <span class="n">ListNode</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ListNode</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># 创建虚拟节点</span>
+        <span class="n">dummy</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">()</span>
+        <span class="c1"># 创建 &quot;当前&quot; 指针指向虚拟节点</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="n">dummy</span>
+
+        <span class="c1"># 遍历 list 和 list2 直到其中任意一个到达尾部</span>
+        <span class="k">while</span> <span class="n">list1</span> <span class="ow">and</span> <span class="n">list2</span><span class="p">:</span>
+            <span class="c1"># list1 当前节点值 小于等于 list2 当前节点值</span>
+            <span class="k">if</span> <span class="n">list1</span><span class="o">.</span><span class="n">val</span> <span class="o">&lt;=</span> <span class="n">list2</span><span class="o">.</span><span class="n">val</span><span class="p">:</span>
+                <span class="c1"># list1 接到 current 之后</span>
+                <span class="n">current</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">list1</span>
+                <span class="c1"># list1 向前一步</span>
+                <span class="n">list1</span> <span class="o">=</span> <span class="n">list1</span><span class="o">.</span><span class="n">next</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># list2 接到 current 之后</span>
+                <span class="n">current</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">list2</span>
+                <span class="c1"># list2 向前一步</span>
+                <span class="n">list2</span> <span class="o">=</span> <span class="n">list2</span><span class="o">.</span><span class="n">next</span>
+            <span class="c1"># current 移动到新添加的节点上</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">current</span><span class="o">.</span><span class="n">next</span>
+
+        <span class="c1"># 处理剩余节点</span>
+        <span class="n">current</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">list1</span> <span class="k">if</span> <span class="n">list1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">list2</span>
+
+        <span class="c1"># 返回</span>
+        <span class="k">return</span> <span class="n">dummy</span><span class="o">.</span><span class="n">next</span>
+</code></pre></div>
+<h2 id="234-palindrome-linked-list">234. Palindrome Linked List</h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>双指针. 快慢指针. 快速定位链表中心点.</p>
+</div>
+<p>这里首先要说明, 在 LeetCode 的官方题解中它使用将链表值转存到数组中然后反转数组进行比较. 但是, 这种解法虽然简单, 但是空间复杂度非常不理想, 所以下面将采用双指针的快慢指针来找到链表的中心点, 并对后半部分链表进行原地反转, 最后前后两部分链表节点一一比对. 这种双指针的算法空间复杂度可以降至 <span class="arithmatex">\(O(1)\)</span>, 时间复杂度仍然保持 <span class="arithmatex">\(O(n)\)</span>.</p>
+<p>双指针的快慢指针有一个核心点, 可以在 <span class="arithmatex">\(O(\frac{2}{n})\)</span> 时间内找到中心点, 快指针一次两步, 慢指针一次一步, 当快指针抵达链表尾部时, 慢指针所在位置即为链表的中心点. 其中奇数链表慢指针所指节点为中心点, 偶数链表慢指针所指节点为上半部链表的尾节点.</p>
+<p>同时, 我们还能根据快指针 (<code>fast</code>) 来判断原链表的奇偶性, <code>fast is None</code> 表示链表是偶数链表, <code>fast.next is None</code> 表示链表是奇数链表.</p>
+<div class="admonition warning 注意">
+<p class="admonition-title">Warning</p>
+<p>实际上原链表的奇偶性并不影响整个代码, 换句话说, 无需考虑奇偶性.</p>
+<p>例如: </p>
+<ul>
+<li><code>[1, 2, 3, 4, 5]</code> 后半部分的链表是 <code>[5, 4, 3]</code>, 前半部分链表是 <code>[1, 2, 3, 4, 5]</code></li>
+<li><code>[1, 2, 3, 4]</code> 后半部分的链表是 <code>[4, 3]</code>, 前半部分链表是 <code>[1, 2, 3, 4]</code></li>
+</ul>
+<p>前半部分链表实际是原链表</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ListNode</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">next</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">next</span><span class="p">:</span> <span class="n">ListNode</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="nb">next</span>
+
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">isPalindrome</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">:</span> <span class="n">ListNode</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="c1"># None 也是回文</span>
+        <span class="k">if</span> <span class="n">head</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="c1"># 使用快慢指针找到链表中心点</span>
+        <span class="n">slow</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="n">fast</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="k">while</span> <span class="n">fast</span> <span class="ow">and</span> <span class="n">fast</span><span class="o">.</span><span class="n">next</span><span class="p">:</span>
+            <span class="n">slow</span> <span class="o">=</span> <span class="n">slow</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">fast</span> <span class="o">=</span> <span class="n">fast</span><span class="o">.</span><span class="n">next</span><span class="o">.</span><span class="n">next</span>
+
+        <span class="c1"># 反转后半部分链表</span>
+        <span class="n">prev</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">while</span> <span class="n">slow</span><span class="p">:</span>
+            <span class="n">next_node</span> <span class="o">=</span> <span class="n">slow</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">slow</span><span class="o">.</span><span class="n">next</span> <span class="o">=</span> <span class="n">prev</span>
+            <span class="n">prev</span> <span class="o">=</span> <span class="n">slow</span>
+            <span class="n">slow</span> <span class="o">=</span> <span class="n">next_node</span>
+
+        <span class="c1"># 比较两部分链表</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="n">prev</span>
+        <span class="c1"># 遍历后半部分.</span>
+        <span class="k">while</span> <span class="n">right</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">left</span><span class="o">.</span><span class="n">val</span> <span class="o">!=</span> <span class="n">right</span><span class="o">.</span><span class="n">val</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            <span class="n">left</span> <span class="o">=</span> <span class="n">left</span><span class="o">.</span><span class="n">next</span>
+            <span class="n">right</span> <span class="o">=</span> <span class="n">right</span><span class="o">.</span><span class="n">next</span>
+
+        <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+<h2 id="20-valid-parentheses">20. Valid Parentheses</h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>栈</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">isValid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="c1"># 初始化栈</span>
+        <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># 初始化 &quot;括号&quot; 映射字典</span>
+        <span class="n">brackets_map</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;(&quot;</span><span class="p">:</span> <span class="s2">&quot;)&quot;</span><span class="p">,</span> <span class="s2">&quot;{&quot;</span><span class="p">:</span> <span class="s2">&quot;}&quot;</span><span class="p">,</span> <span class="s2">&quot;[&quot;</span><span class="p">:</span> <span class="s2">&quot;]&quot;</span><span class="p">}</span>
+
+        <span class="c1"># 遍历字符串</span>
+        <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+            <span class="c1"># 字符在映射字典的keys中</span>
+            <span class="k">if</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">brackets_map</span><span class="p">:</span>
+                <span class="c1"># 入栈</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+            <span class="c1"># 字符在映射字典的values中</span>
+            <span class="k">elif</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">brackets_map</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="c1"># 出栈匹配</span>
+                <span class="k">if</span> <span class="n">stack</span> <span class="o">==</span> <span class="p">[]</span> <span class="ow">or</span> <span class="n">brackets_map</span><span class="p">[</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()]</span> <span class="o">!=</span> <span class="n">char</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="kc">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+        <span class="c1"># 栈为空表示匹配成功</span>
+        <span class="k">return</span> <span class="n">stack</span> <span class="o">==</span> <span class="p">[]</span>
+</code></pre></div>
+<h2 id="155-min-stack">155. Min Stack</h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>辅助栈</p>
+</div>
+<p>通过维护一个辅助栈 min_stack 来追踪当前栈中元素的最小值，并确保每次 push 和 pop 操作都能正确更新最小值。这样，在 getMin() 操作时可以在 O(1) 时间复杂度内返回当前的最小值。</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MinStack</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_stack</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_stack</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">min_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">min_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">top</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">getMin</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+<h2 id="232-implement-queue-using-stacks">232. Implement Queue using Stacks</h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>双栈设计. <code>pop</code> 操作需要判断 <code>pop_stack</code> 是否为空.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MyQueue</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">push_stack</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pop_stack</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">push_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pop_stack</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_move</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pop_stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">peek</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pop_stack</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_move</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pop_stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">empty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">push_stack</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">pop_stack</span>
+
+    <span class="k">def</span> <span class="nf">_move</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">push_stack</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pop_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">push_stack</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+</code></pre></div>
+<h2 id="225-implement-stack-using-queues">225. Implement Stack using Queues</h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>双队列. <code>pop</code> 和 <code>top</code> 需要移动队列(留最后一个元素), 交换队列</p>
+</div>
+<p>开始我以为和上面的 232 题目一样, 但是他们完全是不同的, 用双队列实现栈代价比双栈实现队列要大的多, 因为 <code>pop</code> 和 <code>top</code> 需要每次都移动一次队列中的元素.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+
+<span class="k">class</span> <span class="nc">MyStack</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">push_queue</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pop_queue</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">push</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">push_queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="c1"># 转移队列中的元素, 保留最后一个</span>
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">push_queue</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pop_queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">push_queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">())</span>
+        <span class="c1"># 队列交换</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">push_queue</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pop_queue</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pop_queue</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">push_queue</span>
+        <span class="c1"># 弹出并返回上面保留的最后一个元素</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pop_queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">top</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="c1"># 转移队列中的元素, 保留最后一个</span>
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">push_queue</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pop_queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">push_queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">())</span>
+        <span class="c1"># 队列交换</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">push_queue</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pop_queue</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pop_queue</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">push_queue</span>
+        <span class="c1"># 弹出上面保留的最后一个元素</span>
+        <span class="n">top_element</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pop_queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+        <span class="c1"># 将最后一个元素插回队列</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">push_queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">top_element</span><span class="p">)</span>
+        <span class="c1"># 返回最后一个元素</span>
+        <span class="k">return</span> <span class="n">top_element</span>
+
+    <span class="k">def</span> <span class="nf">empty</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">pop_queue</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">push_queue</span>
+</code></pre></div>
+<h2 id="349-intersection-of-two-arrays">349. Intersection of Two Arrays</h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>利用 python 内建的 <code>set</code>. 用短数组构建 <code>set</code>, 遍历长数组.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">intersection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums1</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">nums2</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="n">shorter</span> <span class="o">=</span> <span class="n">nums1</span>
+        <span class="n">longer</span> <span class="o">=</span> <span class="n">nums2</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums2</span><span class="p">):</span>
+            <span class="n">shorter</span><span class="p">,</span> <span class="n">longer</span> <span class="o">=</span> <span class="n">longer</span><span class="p">,</span> <span class="n">shorter</span>
+
+        <span class="n">shorter_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">shorter</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">({</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">longer</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">shorter_set</span><span class="p">})</span>
+</code></pre></div>
+<h2 id="350-intersection-of-two-arrays-ii">350. Intersection of Two Arrays II</h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>利用 python 内建的 <code>dict</code>. 用短数组构建 <code>dict</code> 字典, 字典的 <code>key</code> 是数组的元素, 字典的值为该元素出现的次数. 遍历长数组判断是否存在在 <code>dict</code> 且出现次数大于零, 满足条件的插入返回列表并将出现次数减一.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">intersection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums1</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">nums2</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="n">shorter</span> <span class="o">=</span> <span class="n">nums1</span>
+        <span class="n">longer</span> <span class="o">=</span> <span class="n">nums2</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums2</span><span class="p">):</span>
+            <span class="n">shorter</span><span class="p">,</span> <span class="n">longer</span> <span class="o">=</span> <span class="n">longer</span><span class="p">,</span> <span class="n">shorter</span>
+
+        <span class="n">hash_map</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">shorter</span><span class="p">:</span>
+            <span class="n">hash_map</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">hash_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">longer</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">hash_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+                <span class="n">hash_map</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+<h2 id="36-valid-sudoku">36. Valid Sudoku</h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>使用 HashTable 将每行, 每列, 每个子宫格作为 key, set 作为值. 这里有个技巧, 可以采用 <code>//</code> 来分组子宫格.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">isValidSudoku</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">board</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">hash_map</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">board</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
+                <span class="n">v</span> <span class="o">=</span> <span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+                    <span class="n">row_key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;row_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="n">col_key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;col_</span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="n">sub_boxes_key</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">//</span> <span class="mi">3</span><span class="p">,</span> <span class="n">j</span> <span class="o">//</span> <span class="mi">3</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="n">row_key</span><span class="p">,</span> <span class="n">col_key</span><span class="p">,</span> <span class="n">sub_boxes_key</span><span class="p">]:</span>
+                        <span class="k">if</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">hash_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">set</span><span class="p">()):</span>
+                            <span class="k">return</span> <span class="kc">False</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">hash_map</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">set</span><span class="p">())</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div>
+<h2 id="102-binary-tree-level-order-traversal">102. Binary Tree Level Order Traversal</h2>
+<p>这道题是二叉树的层序遍历, 增加的一个难度是按层返回二维数组.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<h3 id="_1">思路解释：</h3>
+<ol>
+<li><strong>使用队列进行层序遍历</strong>：通过广度优先搜索（BFS）的方式遍历二叉树，从根节点开始，逐层访问每一层的节点。队列用来存储当前层的所有节点。</li>
+<li><strong>逐层处理节点</strong>：在每次迭代中，处理队列中所有属于同一层的节点，并将这些节点的值收集到一个列表中。</li>
+<li><strong>记录当前层结果</strong>：一旦处理完当前层的所有节点，将其结果列表添加到最终的结果集中，准备处理下一层。</li>
+<li><strong>推进到下一层</strong>：将当前层的所有节点的子节点（即下一层的节点）加入队列，继续下一次迭代。</li>
+<li><strong>结束条件</strong>：当队列为空时，表示所有层次的节点都已经处理完毕，遍历完成，返回最终的结果。</li>
+</ol>
+<h3 id="_2">关键点：</h3>
+<ul>
+<li><strong>队列的作用</strong>：确保按照层次顺序逐层遍历。</li>
+<li><strong>分层处理</strong>：在每一层中，先收集节点的值，然后再将下一层的节点加入队列。</li>
+<li><strong>最终结果</strong>：将每一层的节点值列表依次加入到最终的结果中，实现层序遍历。</li>
+</ul>
+</div>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">level_order</span><span class="p">(</span><span class="n">root</span><span class="p">:</span> <span class="n">TreeNode</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+    <span class="k">if</span> <span class="n">root</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+    <span class="n">queue</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+        <span class="n">level</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">):</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+            <span class="n">level</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">:</span>
+                <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">:</span>
+                <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">res</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.471ce7a9.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>
